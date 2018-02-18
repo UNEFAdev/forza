@@ -11,7 +11,7 @@
           <div class="container has-text-centered">
             <div class="titleAdmin">
               <h1 class="title">
-                Welcome to Tamiat CMS
+                Sistema de administración Forza
               </h1>
             </div>
             <h2 class="subtitle">
@@ -20,7 +20,7 @@
             <router-link to="/">
               <img src="/static/img/logo.png" alt="Tamiat CMS logo">
             </router-link>
-            <p>Version v0.2.2</p>
+            <p>Version v1.0.0</p>
           </div>
         </div>
       </section>

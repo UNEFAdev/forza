@@ -24,21 +24,21 @@
         <!-- username -->
         <div class="field columns">
           <div class="control column">
-            <input type="text" class="input" placeholder="Username" v-model="username" @focus="hideNotif">
+            <input type="text" class="input" placeholder="Usuario" v-model="username" @focus="hideNotif">
           </div>
         </div>
 
         <!-- email -->
         <div class="field columns">
           <div class="control column">
-            <input type="email" class="input" placeholder="Email" v-model="email" @focus="hideNotif">
+            <input type="email" class="input" placeholder="Correo" v-model="email" @focus="hideNotif">
           </div>
         </div>
 
         <!-- password -->
         <div class="field columns">
           <div class="control column">
-            <input type="password" class="input" placeholder="Password" v-model="password" @focus="hideNotif">
+            <input type="password" class="input" placeholder="Contrase" v-model="password" @focus="hideNotif">
           </div>
         </div>
 

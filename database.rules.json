@@ -1,6 +1,6 @@
 {
   "rules": {
-    ".write": "auth.uid === 'YOURID'",    
+    ".write": "auth.uid === 'hWZPSo9BqJf1ArRvrdwdIsAs6Vm1'",    
     ".read": true,
     "posts": {
       "$id": {

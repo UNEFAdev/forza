@@ -18,19 +18,19 @@
         <!-- email -->
         <div class="field columns">
           <div class="control column">
-            <input type="email" class="input" placeholder="Email" v-model="email">
+            <input type="email" class="input" placeholder="Correo" v-model="email">
           </div>
         </div>
 
         <!-- password -->
         <div class="field columns">
           <div class="control column">
-            <input type="password" class="input" placeholder="Password" v-model="password">
+            <input type="password" class="input" placeholder="Contraseña" v-model="password">
           </div>
         </div>
 
         <!-- submit button -->
-        <button type="submit" class="button is-info is is-fullwidth" @click="login">Login</button>
+        <button type="submit" class="button is-info is is-fullwidth" @click="login">Entrar</button>
 
       </div>
     </div>
