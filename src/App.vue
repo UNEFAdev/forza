@@ -16,7 +16,7 @@ html,
 body,
 #app,
 .admin
-  background-color: #F1F1F1
+  background-color: #Fefefe
   height: 100%
   width: 100%
   margin: 0px
