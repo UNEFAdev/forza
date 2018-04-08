@@ -1,14 +1,14 @@
 <template>
   <div class="box">
 
-    <h3>Edit post</h3>
+    <h3>Editar publicación</h3>
     <div class="columns">
 
       <div class="column is-two-thirds">
 
         <!-- edit post title -->
         <div class="field">
-          <label class="label">Post's title</label>
+          <label class="label">Titulo de la publicación</label>
           <div class="control">
             <input type="text" class="input" v-model="post.title">
           </div>
@@ -26,7 +26,7 @@
 
         <!-- edit author -->
         <div class="field">
-          <label class="label">Author</label>
+          <label class="label">Autor</label>
           <div class="control">
             <input type="text" class="input" maxlength="25" v-model="post.author">
             <p>this field is for demo purposes only</p>

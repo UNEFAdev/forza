@@ -33,6 +33,7 @@
 <script>
 import NavbarHome from './Home/layout/NavbarHome'
 import SidebarHome from './Home/layout/SidebarHome'
+
 export default {
   name: 'home',
   components: {
