@@ -13,6 +13,8 @@ import PostEdit from '../components/Admin/content/PostEdit'
 import Settings from '../components/Admin/content/Settings'
 import Pages from '../components/Admin/content/Pages'
 import Media from '../components/Admin/content/Media'
+import PostView from '../components/Admin/content/PostView'
+import PostMain from '../components/Home/content/PostMain'
 
 Vue.use(Router)
 
@@ -22,7 +24,17 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: '/post/view/:key',
+          component: PostView
+        },
+        {
+          path: '/',
+          component: PostMain
+        }
+      ]
     },
     {
       path: '/login',

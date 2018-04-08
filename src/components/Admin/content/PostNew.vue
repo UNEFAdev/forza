@@ -1,14 +1,14 @@
 <template>
   <div class="box">
 
-    <h3>Add new post</h3>
+    <h3>Crear un nuevo post</h3>
     <div class="columns">
 
       <div class="column is-two-thirds">
 
         <!-- the new post title -->
         <div class="field">
-          <label class="label">Post's title</label>
+          <label class="label">Título del post</label>
           <div class="control">
             <input type="text" class="input" v-model="title">
           </div>
@@ -26,23 +26,23 @@
 
         <!-- author -->
         <div class="field">
-          <label class="label">Author</label>
+          <label class="label">Autor</label>
           <div class="control">
             <input type="text" class="input" v-model="author" maxlength="25" required>
-            <p>this field is for demo purposes only</p>
+            <p>Este campo es para cuestiones de demostración</p>
           </div>
         </div>
 
         <!-- tags -->
         <div class="field">
-          <label class="label">Tags</label>
+          <label class="label">Etiquetas</label>
           <div class="control">
             <input type="text" class="input" maxlength="25" v-model="tags">
-            <p>Seperate tags with commas</p>
+            <p>Separar etiquetas con coma</p>
           </div>
         </div>
         <div class="field">
-          <label class="label">Image</label>
+          <label class="label">Imagen</label>
           <div class="control">
             <img :src="featuredImage">
             <div class="file">
@@ -53,7 +53,7 @@
                     <i class="fa fa-upload"></i>
                   </span>
                   <span class="file-label">
-                    Choose a file…
+                    Escoge un archivo…
                   </span>
                 </span>
               </label>
@@ -69,8 +69,8 @@
     </div>
 
     <!-- the form buttons -->
-    <button type="submit" class="button is-info" @click="add">Add</button>
-    <router-link to="/admin/posts" class="button is-danger">Cancel</router-link>
+    <button type="submit" class="button is-info" @click="add">Publicar</button>
+    <router-link to="/admin/posts" class="button is-danger">Cancelar</router-link>
   </div>
 </template>
 

@@ -3,14 +3,15 @@
 
 import Firebase from 'firebase'
 
-let config = {
-    apiKey: "AIzaSyB2oNIcGykb3UOecjr5rt19rZvUwT6iMLM",
-    authDomain: "unefa-7551b.firebaseapp.com",
-    databaseURL: "https://unefa-7551b.firebaseio.com",
-    projectId: "unefa-7551b",
-    storageBucket: "unefa-7551b.appspot.com",
-    messagingSenderId: "483490335789"
-  }; 
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyAEEiv4EBneXtR4-e_dcHChi0pxzuJk8-Y",
+  authDomain: "unefa-site.firebaseapp.com",
+  databaseURL: "https://unefa-site.firebaseio.com",
+  projectId: "unefa-site",
+  storageBucket: "unefa-site.appspot.com",
+  messagingSenderId: "781577979038"
+};
 
 let app = Firebase.initializeApp(config)
 let db = app.database()

@@ -69,24 +69,24 @@
 </template>
 
 <script>
-import firebase from 'firebase';
-import { usersRef } from '../../../config';
+import firebase from 'firebase'
+import { usersRef } from '../../../config'
 
 export default {
   name: 'users',
-  data() {
+  data () {
     return {
       currentUser: firebase.auth().currentUser
     }
   },
-  firebase() {
+  firebase () {
     return {
       users: usersRef
     }
   },
   methods: {
     // approve a new user method
-    approve(user) {
+    approve (user) {
       this.$firebaseRefs.users.child(user['.key']).set({
         username: user.username,
         email: user.email,
@@ -94,7 +94,7 @@ export default {
       })
     },
     // ban an existing admin
-    ban(user) {
+    ban (user) {
       this.$firebaseRefs.users.child(user['.key']).set({
         username: user.username,
         email: user.email,
@@ -102,30 +102,29 @@ export default {
       })
     },
     // delete the current user
-    deleteCurrentUser() {
-      let vm = this;
+    deleteCurrentUser () {
+      let vm = this
       // delete the current user from the firebase auth
       this.currentUser.delete()
-        .then(function() {
+        .then(function () {
           // delete the current user from the real time database
-          vm.$firebaseRefs.users.child(vm.currentUser.uid).remove();
-          console.log('user deleted successfuly');
+          vm.$firebaseRefs.users.child(vm.currentUser.uid).remove()
+          console.log('user deleted successfuly')
         })
-        .catch(function(error) {
-          console.log(error.message);
-        });
-
+        .catch(function (error) {
+          console.log(error.message)
+        })
     }
   },
   computed: {
-    admins() {
+    admins () {
       return this.users.filter((user) => {
-        return user.role === 'admin';
+        return user.role === 'admin'
       })
     },
-    guests() {
+    guests () {
       return this.users.filter((user) => {
-        return user.role === 'guest';
+        return user.role === 'guest'
       })
     }
   }

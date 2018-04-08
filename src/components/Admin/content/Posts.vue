@@ -3,8 +3,8 @@
 
     <!-- posts page title -->
     <div class="content-heading is-flex">
-      <h3 class="is-size-3">Posts</h3>
-      <router-link to="/admin/posts/new" class="button is-info">Add New</router-link>
+      <h3 class="is-size-3">Publicaciones</h3>
+      <router-link to="/admin/posts/new" class="button is-info">Crear Publicación</router-link>
     </div>
 
     <!-- notification -->
@@ -27,10 +27,10 @@
       <table class="table is-fullwidth is-striped">
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Created</th>
-            <th>tags</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Creación</th>
+            <th>Etiquetas</th>
           </tr>
         </thead>
         <tbody>
@@ -42,15 +42,15 @@
 
               <div class="actions">
                 <router-link :to="'/admin/posts/edit/' + post['.key']">
-                  <span class="has-text-info">Edit</span>
+                  <span class="has-text-info">Editar</span>
                 </router-link>
-                <span @click="deletePost(post)" class="has-text-danger">Delete</span>
+                <span @click="deletePost(post)" class="has-text-danger">Borrar</span>
               </div>
             </td>
 
             <td class="post-author-cell">{{post.author}}</td>
             <td class="post-tags-cell">{{postDate(post.created)}}</td>
-            <td class="post-tags-cell">
+            <td class=" tag is-info">
               <span v-if="post.tags">
                 {{joined(post.tags)}}
               </span>

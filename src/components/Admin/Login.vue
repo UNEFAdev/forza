@@ -10,9 +10,7 @@
 
         <!-- tamiat CMS logo -->
         <div class="columns is-flex is-centered is-mobile">
-          <figure class="column is-half">
-            <router-link to="/"><img src="/static/img/logo.png" alt="Tamiat logo"></router-link>
-          </figure>
+            <router-link to="/"><p class="is-size-3">SISTEMA FORZA</p></router-link>
         </div>
 
         <!-- email -->
