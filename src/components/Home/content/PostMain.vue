@@ -22,14 +22,13 @@
         <footer class="">
           <div class="buttons has-addons is-centered">
             <div class="is-centered">
-              <a href="#" class=" button is-info ">Ver más</a>
+              <router-link :to="'post/view/' + post['.key']" class=" button is-info ">Ver mas</router-link>
             </div>
           </div>
         </footer>
       </div>
     </div>
   </div>
-
 </template>
 
 <script>

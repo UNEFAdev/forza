@@ -42,6 +42,21 @@
           </div>
         </div>
         <div class="field">
+          <label class="label">Escoga la carrera de la publicación</label>
+          <div class="control">
+            <div class="select is-info ">
+              <select v-model="category">
+                <option value="Sistemas">Sistemas</option>
+                <option value="Enfermeria">Enfermería</option>
+                <option value="Electrica">Eléctrica</option>
+                <option value="Pasantias">Pasantias</option>
+                <option value="Agronomia">Agronomía</option>
+                <option value="Administracion">Administración</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
           <label class="label">Imagen</label>
           <div class="control">
             <img :src="featuredImage">
@@ -89,6 +104,7 @@ export default {
       title: '',
       body: '',
       author: '',
+      category: '',
       tags: '',
       featuredImage: '',
       editorOptions
@@ -107,6 +123,7 @@ export default {
           title: this.title,
           body: this.body,
           author: this.author,
+          category: this.category,
           tags: this.tags.replace(/ /g, '').split(','),
           img: this.featuredImage,
           created: Date.now()

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <header>
       <h2 class="is-title is-size-4">
         <a href="#">Website Logo</a>

@@ -29,6 +29,7 @@
           <tr>
             <th>Título</th>
             <th>Autor</th>
+            <th>Categoria</th>
             <th>Creación</th>
             <th>Etiquetas</th>
           </tr>
@@ -49,6 +50,7 @@
             </td>
 
             <td class="post-author-cell">{{post.author}}</td>
+            <td class="post-author-cell">{{post.category}}</td>
             <td class="post-tags-cell">{{postDate(post.created)}}</td>
             <td class=" tag is-info">
               <span v-if="post.tags">

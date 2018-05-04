@@ -10,14 +10,15 @@
 
         <!-- warning notification -->
         <div v-if="userUID" class="notification is-success">
-          <button class="delete" @click="hideNotif"></button> You have successfully signed up. You will have access to the
-          admin page once your account has been approved.
+          <button class="delete" @click="hideNotif"></button> Ahora estas registrado.
+          Accederas a la pagina de administración cuando tu cuenta se haya verificado.
         </div>
 
         <!-- tamiat CMS logo -->
         <div class="columns is-flex is-centered is-mobile">
-          <figure class="column is-half">
-            <router-link to="/"><img src="../assets/logo.png" alt="Tamiat logo"></router-link>
+          <figure class="column is-half has-text-centered">
+            <p class="is-size-5">Registro</p>
+            <router-link to="/"></router-link>
           </figure>
         </div>
 
@@ -38,15 +39,28 @@
         <!-- password -->
         <div class="field columns">
           <div class="control column">
-            <input type="password" class="input" placeholder="Contrase" v-model="password" @focus="hideNotif">
+            <input type="password" class="input" placeholder="Contraseña" v-model="password" @focus="hideNotif">
           </div>
         </div>
-
+        <div class="field columns is-centered">
+          <div class="control column is-narrow">
+            <div class="select is-info ">
+              <select v-model="category">
+                <option value="Sistemas">Sistemas</option>
+                <option value="Enfermeria">Enfermería</option>
+                <option value="Electrica">Eléctrica</option>
+                <option value="Pasantias">Pasantias</option>
+                <option value="Agronomia">Agronomía</option>
+                <option value="Administracion">Administración</option>
+              </select>
+            </div>
+          </div>
+        </div>
         <!-- submit button -->
-        <button class="button is-info is is-fullwidth" @click="signUp">Sign Up</button>
+        <button class="button is-info is is-fullwidth" @click="signUp">Registrarse</button>
         <p>
-          You already have an account
-          <router-link to="/login">Login</router-link>
+          Ya tienes una cuenta?
+          <router-link to="/login">Iniciar Sesión</router-link>
         </p>
 
       </div>
@@ -55,57 +69,59 @@
 </template>
 
 <script>
-  import firebase from 'firebase';
+import firebase from 'firebase'
 
-  export default {
-    name: 'sign-up',
-    data() {
-      return {
-        // All the fields required in the login page
-        username: '',
-        email: '',
-        password: '',
-        err: {
-          code: '',
-          message: ''
-        },
-        userUID: ''
+export default {
+  name: 'sign-up',
+  data () {
+    return {
+      // All the fields required in the login page
+      username: '',
+      category: '',
+      email: '',
+      password: '',
+      err: {
+        code: '',
+        message: ''
+      },
+      userUID: ''
+    }
+  },
+  methods: {
+    signUp () {
+      // check if all fields are filled
+      if (this.email && this.username && this.password && this.category) {
+        // create a new user with the provided email and password
+        firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+          .then((user) => {
+            // if user created successfully add it to the db and display a success message
+            this.userUID = user.uid
+            this.addUser(user.uid)
+          })
+          // if creating user fails display an error message
+          .catch(err => Object.assign({}, err))
+      } else {
+        this.err.code = '¡Campos vacios!'
+        this.err.message = 'Por favor rellene todos los campos'
       }
     },
-    methods: {
-      signUp() {
-        // check if all fields are filled
-        if (this.email && this.username && this.password) {
-          // create a new user with the provided email and password
-          firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-            .then((user) => {
-              // if user created successfully add it to the db and display a success message
-              this.userUID = user.uid;
-              this.addUser(user.uid);
-            })
-            // if creating user fails display an error message
-            .catch(err => this.err = Object.assign({}, err));
-        } else {
-          this.err.code = 'Empty Fields !!';
-          this.err.message = 'please fill in all the fields !'
-        }
-      },
-      hideNotif() {
-        // hide all notifications
-        this.err.code = '';
-        this.err.message = '';
-        this.userUID = '';
-      },
-      addUser(userUID) {
-        // add the new user credentiels to the database using the same ID
-        firebase.database().ref('users/' + userUID).set({
-          username: this.username,
-          email: this.email,
-          role: 'guest'
-        });
-      }
+    hideNotif () {
+      // hide all notifications
+      this.err.code = ''
+      this.err.message = ''
+      this.userUID = ''
+    },
+    addUser (userUID) {
+      // add the new user credentiels to the database using the same ID
+      firebase.database().ref('users/' + userUID).set({
+        username: this.username,
+        email: this.email,
+        category: this.category,
+        role: 'guest'
+      })
     }
   }
+}
 
 </script>
 

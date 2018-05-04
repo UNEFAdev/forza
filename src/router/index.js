@@ -5,6 +5,7 @@ import Router from 'vue-router'
 import Home from '../components/Home'
 import Admin from '../components/Admin'
 import Login from '../components/Admin/Login'
+import SignUp from '../components/Admin/Signup'
 
 // import admin page components
 import Posts from '../components/Admin/content/Posts'
@@ -27,12 +28,12 @@ export default new Router({
       component: Home,
       children: [
         {
-          path: '/post/view/:key',
-          component: PostView
+          path: '',
+          component: PostMain
         },
         {
-          path: '/',
-          component: PostMain
+          path: 'post/view/:key',
+          component: PostView
         }
       ]
     },
@@ -40,6 +41,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/signup',
+      name: 'SignUp',
+      component: SignUp
     },
     {
       path: '/admin',

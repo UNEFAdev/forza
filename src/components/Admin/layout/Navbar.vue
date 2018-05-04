@@ -22,7 +22,7 @@
     <div class="navbar-menu" id="navbar" :class="{'is-active': mobileMenuIsActive}">
       <div class="navbar-end">
         <span class="navbar-item">
-          {{currentUser.email}}
+          {{currentUser.email}}, {{currentUser.uid}} {{currentUser.category}}
         </span>
         <span class="navbar-item sign-out" @click="signOut">
           <span class="icon is-medium has-text-centered">
@@ -46,7 +46,7 @@ export default {
       mobileMenuIsActive: false,
       currentUser: firebase.auth().currentUser,
       showModal: false,
-      header: 'Are you sure you want to logout?',
+      header: 'Seguro que quieres cerrar tu sesión?',
       kind: 'logout'
     }
   },

@@ -12,17 +12,17 @@
        <input type="text" class="input" v-if="kind == 'addSetting'" :placeholder="'Setting'" v-model="settingName">
     </section>
     <footer class="modal-card-foot" v-if="kind == 'logout'">
-      <button class="button is-success" @click="$emit('confirmLogout')">Logout</button>
-      <button class="button" @click="$emit('close')">Cancel</button>
+      <button class="button is-success" @click="$emit('confirmLogout')">Cerrar Sesion</button>
+      <button class="button" @click="$emit('close')">Cancelar</button>
     </footer>
     <footer class="modal-card-foot" v-else>
       <template v-if="kind == 'deletePage' || kind == 'deleteField' || kind == 'deleteSetting' || kind == 'deletePost'">
-        <button class="button is-success" @click="deleteObj()">Confirm</button>
+        <button class="button is-success" @click="deleteObj()">Confirmar</button>
       </template>
       <template v-else>
-        <button class="button is-success" @click="add()">Add</button>
+        <button class="button is-success" @click="add()">Agregar</button>
       </template>
-      <button class="button" @click="$emit('close')">Cancel</button>
+      <button class="button" @click="$emit('close')">Cancelar</button>
     </footer>
   </div>
 </div>
