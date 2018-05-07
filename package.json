@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "bulma": "^0.6.2",
+    "bulma-extensions": "^1.0.14",
     "firebase": "^4.10.1",
     "font-awesome": "^4.7.0",
     "moment": "^2.21.0",
