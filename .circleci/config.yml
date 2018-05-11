@@ -50,10 +50,6 @@ jobs:
     working_directory: ~/repo
     steps:
       - run:
-          name: Firebase Deploy
-          command: bash .circleci/setup-heroku.sh
-
-      - run:
           name: Set Firebase Deploy Key
           command: firebase use --token $FIREBASE_DEPLOY_KEY $FIREBASE_APP_NAME
       - run:
