@@ -10,8 +10,9 @@
         </header>
         <div class="card-content">
           <ul class="menu-list">
-            <li class="item-menu"><a href="http://dasypc.jimdo.com/servicio-comunitario" target="_blank">Servicio Comunitario</a></li>
-            <li class="item-menu"><a>Pasantías</a></li>
+            <li class="item-menu"><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
+            <li class="item-menu"><a href="http://dasypc.jimdo.com/servicio-comunitario" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i> Servicio Comunitario</a></li>
+            <li class="item-menu"><a><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pasantías</a></li>
           </ul>   
         </div>
         <p class="card-header-title menu-label">
@@ -33,7 +34,7 @@
       <div class="menu">
         <ul class="menu-list">
           <li><BulmaAccordionItem>
-            <h4 slot="title">Ing. De Sistemas</h4>
+            <h4 slot="title"><i class="fa fa-laptop" aria-hidden="true"></i> Ing. De Sistemas</h4>
             <p slot="content">          
               <ul>
                 <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
@@ -46,7 +47,7 @@
         </li>
         <li>
           <BulmaAccordionItem>
-            <h4 slot="title">Ing. Eléctrica</h4>
+            <h4 slot="title"><i class="fa fa-bolt" aria-hidden="true"></i> Ing. Eléctrica</h4>
             <p slot="content">          
               <ul>
                 <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
@@ -58,7 +59,7 @@
         </li>
         <li>
           <BulmaAccordionItem>
-            <h4 slot="title">Ing. Agronómica</h4>
+            <h4 slot="title"><i class="fa fa-pagelines" aria-hidden="true"></i> Ing. Agronómica</h4>
             <p slot="content">          
               <ul>
                 <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
@@ -69,7 +70,7 @@
         </li>
         <li>
           <BulmaAccordionItem>
-            <h4 slot="title">TSU. Enfermería</h4>
+            <h4 slot="title"><i class="fa fa-stethoscope" aria-hidden="true"></i> TSU. Enfermería</h4>
             <p slot="content">          
               <ul>
                 <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
@@ -80,7 +81,7 @@
         </li>
         <li>
           <BulmaAccordionItem>
-            <h4 slot="title">Lic. Administración y gestión municipal</h4>
+            <h4 slot="title"><i class="fa fa-archive" aria-hidden="true"></i> Lic. Administración y gestión municipal</h4>
             <p slot="content">          
               <ul>
                 <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
@@ -91,7 +92,7 @@
         </li>
         <li>
           <BulmaAccordionItem>
-            <h4 slot="title">Lic. Economía Social</h4>
+            <h4 slot="title"><i class="fa fa-university" aria-hidden="true"></i> Lic. Economía Social</h4>
             <p slot="content">          
               <ul>
                 <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
