@@ -24,7 +24,7 @@
         </div>
       </div>
     </section>
-    <section class="section">
+    <section class="section-col">
       <div class="container">
         <div class="columns is-centered">
           <div class="columm">
@@ -42,6 +42,22 @@
           </div>
         </div>
       </div>
+<div class="modal"> <!--agregar manualmente el toggle by js-->
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
     </section>
     <footer class="footer">
       <div class="container">
@@ -49,25 +65,6 @@
           <div class="column">
               &copy; Forza System - UNEFA Núcleo Lara
           </div>
-        <!--  <div class="column is-one-fifth">
-            <p class="buttons is-centered">
-              <a class="button is-small is-link is-inverted is-outlined" style="border: none;">
-                <span class="icon fa-lg">
-                  <i class="fa fa-telegram fa-lg" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="button is-small is-success is-inverted is-outlined" style="border: none;">
-                <span class="icon fa-lg">
-                  <i class="fa fa-whatsapp fa-lg" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="button is-small is-link is-inverted is-outlined" style="border: none;">
-                <span class="icon fa-lg">
-                  <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
-                </span>
-              </a>
-            </p>
-          </div>-->
         </div>
       </div>
     </footer>
@@ -76,9 +73,20 @@
 <style type="text/css">
 .bordown{border-bottom: 1px solid #dbdbdb;}
 .card-right{margin:3% 0% 5%; webkit-box-shadow: 0 2px 3px #211f1f40, 1px 10px 15px 2px #211f1f40 !important; box-shadow: 0 2px 3px #211f1f40, 1px 10px 15px 2px #211f1f40 !important;}
-/*########## custom styles 06-05-2018*/
-.card-header-title {background: #3273dc; color: white;}
+.post-title{background: #3273dc !important;}
+/*########## custom styles for cards and sidebar menu 06-05-2018*/
+.card-header-title, .card-header-title h4 a{background: #606d82; color: #fff;}
+.card-header-title h4 a:hover {background: transparent;}
+.accordion>.menu>.menu-list>li>div{cursor: pointer;}
+.item-menu {background: #606d82; padding: 0.5rem; color: white; -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1); box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);}
+.item-menu a{color: white;}
+.item-menu-inside{background: #363c42; padding: 0.5rem; color: white; -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1); box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);}
+.item-menu-inside a {color: #fff;}
+.menu-list li ul { border-left: none; margin: 0; padding-left: 0; }
+.menu-label{background: #3273dc;}
+.horizontal, .vertical { background: rgb(54, 60, 66);}
 #navlist li {display: inline; list-style-type: none; padding-right: 20px; }
+ul#navlist li a {color: #000; }
 </style>
 
 <script>
@@ -111,4 +119,5 @@
     })
   }
 })
+
 </script>

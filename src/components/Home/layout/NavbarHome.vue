@@ -8,9 +8,6 @@
       </div>
     </div>
     <div class="navbar-menu" id="navMenu">
-      <a class="navbar-item has-text-white">
-        Ultima hora
-      </a>
       <p class="navbar-item has-text-white">
         Ordenar por:
       </p>
