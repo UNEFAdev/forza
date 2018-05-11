@@ -82,4 +82,8 @@ workflows:
             - build
           filters:
             branches:
-              only: master      
+              only: master
+  build_and_test:
+    jobs:
+      - machine
+      - build 
