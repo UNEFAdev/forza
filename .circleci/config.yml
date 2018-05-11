@@ -68,7 +68,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Firebase Tools Install
-          command: npm install -g firebase-tools
+          command: sudo npm install -g firebase-tools
       - run:
           name: Install SASS
           command: npm install node-sass sass-loader --save-dev
