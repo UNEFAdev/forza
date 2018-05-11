@@ -30,8 +30,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
   bundle_dependencies:
-    machine:
-        enabled: true
     working_directory: ~/repo
     steps:
       - run:
@@ -45,10 +43,13 @@ jobs:
           command: npm install moment vue-router bulma firebase vuefire font-awesome vue-quill-editor --save         
         
   deploy:
-    machine:
-        enabled: true
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:7.10
+    working_directory: ~/repo    
     working_directory: ~/repo
     steps:
+      - checkout
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
