@@ -4,18 +4,12 @@
 #
 version: 2
 jobs:
-
-  machine:
+  build:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
     working_directory: ~/repo
-
-  build:
-    working_directory: ~/repo
     steps:
-      - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -35,6 +29,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
   bundle_dependencies:
+    machine:
+        enabled: true
     working_directory: ~/repo
     steps:
       - run:
@@ -76,4 +72,8 @@ workflows:
             - build
           filters:
             branches:
-              only: master      
+              only: master
+  build_and_test:
+    jobs:
+      - build
+      - bundle_dependencies
