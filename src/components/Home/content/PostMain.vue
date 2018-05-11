@@ -1,16 +1,19 @@
 <template>
-  <div class="columns ">
+  <div class="columns">
     <div class="column">
       <div v-for="(post, index) in posts" :key="index" class="card card-right ">
         <header class="card-header">
-          <p class="card-header-title">
+          <p class="card-header-title post-title">
             {{post.title}}
           </p>
         </header>
         <div class="card-content">
           <div class="content has-text-justified">
             {{cutString(post.body)}}
-            <br>         
+            <br>  
+            <div class="has-text-right is-size-7">
+              Carrera: <strong class="has-text-weight-semibold has-text-link">{{post.career}} Ing.Sistemas</strong>
+            </div>       
             <div class="has-text-right is-size-7">
               Publicado por: <strong class="has-text-weight-semibold has-text-link">{{post.author}}</strong>
             </div>

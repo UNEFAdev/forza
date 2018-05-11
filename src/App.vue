@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'App'
 }
@@ -26,5 +27,7 @@ body,
   @import "../node_modules/bulma/bulma"
   *
     box-sizing: border-box
+
+  @import '../node_modules/bulma-extensions/bulma-accordion/dist/bulma-accordion'
 
 </style>

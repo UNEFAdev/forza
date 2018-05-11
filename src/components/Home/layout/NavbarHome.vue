@@ -8,9 +8,9 @@
       </div>
     </div>
     <div class="navbar-menu" id="navMenu">
-      <a class="navbar-item has-text-white">
-        Ultima hora
-      </a>
+      <a href="/" class="navbar-item has-text-white">
+        <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+     </a>
       <p class="navbar-item has-text-white">
         Ordenar por:
       </p>
@@ -77,5 +77,5 @@
 
 <style scoped>
 a.navbar-item:hover, a.navbar-item.is-active, a.navbar-link:hover, a.navbar-link.is-active {
-    background-color: #0459e2;}
+  background-color: #0459e2;}
 </style>
