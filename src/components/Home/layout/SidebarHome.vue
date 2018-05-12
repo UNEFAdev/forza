@@ -11,7 +11,7 @@
         <div class="card-content">
           <ul class="menu-list">
             <li class="item-menu"><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
-            <li class="item-menu"><a href="http://dasypc.jimdo.com/servicio-comunitario" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i> Servicio Comunitario</a></li>
+            <li class="item-menu"><a><i class="fa fa-globe" aria-hidden="true"></i> Servicio Comunitario</a></li>
             <li class="item-menu"><a><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pasantías</a></li>
           </ul>   
         </div>
