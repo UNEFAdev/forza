@@ -1,0 +1,99 @@
+.ppal {
+	background: #Fefefe;
+}
+
+.bordown {
+	border-bottom: 1px solid #dbdbdb;
+}
+
+.card-right {
+	margin:3% 0% 5%; 
+	webkit-box-shadow: 0 2px 3px #211f1f40, 1px 10px 15px 2px #211f1f40 !important; 
+	box-shadow: 0 2px 3px #211f1f40, 1px 10px 15px 2px #211f1f40 !important;
+}
+
+.post-title {
+	background: #3273dc !important;
+}
+/*########## custom styles for cards and sidebar menu 06-05-2018*/
+.card-header-title, .card-header-title h4 a {
+	background: #606d82; 
+	color: #fff;
+}
+
+.card-header-title h4 a:hover {
+	background: transparent;
+}
+
+.accordion>.menu>.menu-list>li>div {
+	cursor: pointer;
+}
+
+.item-menu {
+	background: #606d82; 
+	padding: 0.5rem; 
+	color: white; 
+	-webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+	box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+}
+
+.item-menu a {
+	color: white;
+}
+
+.item-menu-inside {
+	background: #363c42; 
+	padding: 0.5rem; 
+	color: white; 
+	-webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1); 
+	box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+}
+
+.item-menu-inside a {
+	color: #fff;
+}
+
+.menu-list li ul { 
+	border-left: none;
+	margin: 0; 
+	padding-left: 0; 
+}
+
+.menu-label {
+	background: #3273dc;
+}
+
+.horizontal, .vertical { 
+	background: rgb(54, 60, 66);
+}
+
+#navlist li, #navlist li strong {
+	display: inline; 
+	list-style-type: none; 
+	padding-right: 20px; 
+	font-size: small;
+	color: #fff;
+}
+
+ul#navlist li a {
+	color: #fff; 
+	font-size: small;
+}
+
+.footer {
+	background-color: #3273dc;
+	padding: 1rem;
+	color: #fff;
+}
+.section-col{
+	padding: 1.5rem;
+	background:rgba(50, 115, 220, 0.30980392156862746);
+}
+
+.metad {
+	margin: 1% 10%;
+}
+
+.metad li {
+	margin: 0 1%;
+}
