@@ -84,7 +84,7 @@
         keys: [],
         pages: [],
         promises : [],
-        size: 4,
+        size: 7,
         extraRecord: []
       }
     },
