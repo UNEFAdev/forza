@@ -24,24 +24,8 @@
         </div>
       </div>
     </section>
-    <section class="section-col">
-      <div class="container">
-        <div class="columns is-centered">
-          <div class="columm">
-            <div class="integrantes is-info">
-              <ul id="navlist">
-                <li><strong>Colaboradores:</strong></li>
-                <li><a href="#">Alexander Rodríguez</a></li>
-                <li><a href="#">Brandon Rojas</a></li>
-                <li><a href="#">Erickson Diaz</a></li>
-                <li><a href="#">Miguel Carvajal</a></li>
-                <li><a href="#">Naudy Linárez</a></li>
-                <li><a href="#">Korina Dávila</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+
+  
 <div class="modal"> <!--agregar manualmente el toggle by js-->
   <div class="modal-background"></div>
   <div class="modal-card">
@@ -58,12 +42,27 @@
     </footer>
   </div>
 </div>
-    </section>
+
     <footer class="footer">
       <div class="container">
-        <div class="columns">
+        <div class="columns is-centered">
+          <div class="columm">
+            <div class="integrantes is-info">
+              <ul id="navlist">
+                <li><strong>Créditos:</strong></li>
+                <li><a href="#">Alexander Rodríguez</a></li>
+                <li><a href="#">Brandon Rojas</a></li>
+                <li><a href="#">Erickson Diaz</a></li>
+                <li><a href="#">Miguel Carvajal</a></li>
+                <li><a href="#">Naudy Linárez</a></li>
+                <li><a href="#">Korina Dávila</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="columns has-text-centered">
           <div class="column">
-              &copy; Forza System - UNEFA Núcleo Lara
+              <div>&copy; Universidad Nacional Experimental Politécnica de la Fuerza Armada Nacional - 2018</div>
           </div>
         </div>
       </div>
