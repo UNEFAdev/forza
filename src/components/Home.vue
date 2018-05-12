@@ -10,7 +10,7 @@
          </div>
        </div>
      </section>
-     <section class="section">
+     <section class="section ppal">
       <div class="container">
         <div class="columns">
           <sidebar></sidebar>
@@ -62,7 +62,7 @@
         </div>
         <div class="columns has-text-centered">
           <div class="column">
-              <div>&copy; Universidad Nacional Experimental Politécnica de la Fuerza Armada Nacional - 2018</div>
+              <div>&copy; Universidad Nacional Experimental Politécnica de la Fuerza Armada Nacional - {{(new Date()).getFullYear()}}</div>
           </div>
         </div>
       </div>
@@ -103,5 +103,4 @@
     })
   }
 })
-
 </script>

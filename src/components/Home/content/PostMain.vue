@@ -27,7 +27,7 @@
                     <i class="fa fa-whatsapp fa-lg" aria-hidden="true"></i>
                   </span>
                 </a>
-                <a class="button is-small is-link is-outlined" style="border: none;">
+                <a class="button is-small is-link is-outlined" style="border: none;" href="javascript: void(0);" data-layout="button" onclick="window.open('https://www.facebook.com/sharer.php?u=https://forza.cf/post/view/-L9XPZjtIRXcHfjvRLvD&title=title&description=MyDescription');">
                   <span class="icon fa-lg">
                     <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
                   </span>
