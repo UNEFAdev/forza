@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<title>Forza System - UNEFA Núcleo Lara</title>
-    <link rel="shortcut icon" type="image/x-icon" href="./src/assets/logo.png">
-  </head>
-  <body>
-    <div id="apph"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Forza System - UNEFA Núcleo Lara</title>
+  <link rel="shortcut icon" type="image/x-icon" href="./src/assets/logo.png">
+</head>
+<body onload="date()">
+  <div id="apph"></div>
+  <!-- built files will be auto injected -->
+</body>
+<script>
+  function date (){
+    let anio = (new Date()).getFullYear();
+    document.getElementById("anio").innerHTML = anio;
+  }
+</script>
 </html>

@@ -62,7 +62,7 @@
         </div>
         <div class="columns has-text-centered">
           <div class="column">
-              <div>&copy; Universidad Nacional Experimental Politécnica de la Fuerza Armada Nacional - 2018</div>
+              <div>&copy; Universidad Nacional Experimental Politécnica de la Fuerza Armada Nacional - <span id="anio"></span></div>
           </div>
         </div>
       </div>
@@ -103,5 +103,4 @@
     })
   }
 })
-
 </script>
