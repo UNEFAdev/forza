@@ -50,12 +50,12 @@
             <div class="integrantes is-info">
               <ul id="navlist">
                 <li><strong>Créditos:</strong></li>
-                <li><a href="#">Alexander Rodríguez</a></li>
-                <li><a href="#">Brandon Rojas</a></li>
-                <li><a href="#">Erickson Diaz</a></li>
-                <li><a href="#">Miguel Carvajal</a></li>
-                <li><a href="#">Naudy Linárez</a></li>
-                <li><a href="#">Korina Dávila</a></li>
+                <li><a href="https://github.com/AlexR1712" target="_blank">Alexander Rodríguez</a></li>
+                <li><a href="https://github.com/brandondrl" target="_blank">Brandon Rojas</a></li>
+                <li><a href="https://github.com/tatuco88" target="_blank">Erickson Diaz</a></li>
+                <li><a href="javascript:void(0);">Miguel Carvajal</a></li>
+                <li><a href="https://github.com/ViT4RGh0ST" target="_blank">Naudy Linárez</a></li>
+                <li><a href="javascript:void(0);">Korina Dávila</a></li>
               </ul>
             </div>
           </div>
