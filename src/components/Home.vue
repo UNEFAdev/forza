@@ -10,7 +10,7 @@
          </div>
        </div>
      </section>
-     <section class="section">
+     <section class="section ppal">
       <div class="container">
         <div class="columns">
           <sidebar></sidebar>
