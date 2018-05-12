@@ -85,3 +85,11 @@ ul#navlist li a {
 	padding: 1.5rem;
 	background:rgba(50, 115, 220, 0.30980392156862746);
 }
+
+.metad {
+	margin: 1% 10%;
+}
+
+.metad li {
+	margin: 0 1%;
+}

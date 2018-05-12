@@ -10,25 +10,10 @@
         <div class="card-content">
           <div class="content has-text-justified">
             {{cutString(post.body)}}
-            <br>  
-            <div class="has-text-right is-size-7">
-              Carrera: <strong class="has-text-weight-semibold has-text-link">{{post.career}} Ing.Sistemas</strong>
-            </div>       
-            <div class="has-text-right is-size-7">
-              Publicado por: <strong class="has-text-weight-semibold has-text-link">{{post.author}}</strong>
-            </div>
-            <div class="is-right has-text-right is-size-7">
-              <time datetime="2018-1-1"><strong>{{postDate(post.created)}}</strong></time>
-            </div>
           </div>
         </div>
         <footer class="">
           <div class="columns">
-            <div class="column">
-              <div class="buttons has-addons is-centered">
-                <router-link :to="'post/view/' + post['.key']" class=" button is-link"><span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></i></span>&nbsp; Ver mas</router-link>        
-              </div>
-            </div>
             <div class="column is-one-fifth">
               <p class="buttons is-centered">
                 <i class="fa fa-share" aria-hidden="true"></i>&nbsp;&nbsp;
@@ -49,6 +34,25 @@
                 </a>
               </p>
             </div>
+            <div class="column">
+              <ul class="is-flex metad">
+                <li class=" is-size-7">              
+                  <time datetime="2018-1-1"><strong>{{postDate(post.created)}}</strong></time>
+                </li>
+                <li class=" is-size-7">              
+                  Publicado por: <strong class="has-text-weight-semibold has-text-link">{{post.author}}</strong>
+                </li>
+                <li class=" is-size-7">              
+                  Carrera: <strong class="has-text-weight-semibold has-text-link">{{post.career}} Ing.Sistemas</strong>
+                </li>
+              </ul>
+            </div>
+            <div class="column is-one-quarter">
+              <div class="buttons has-addons is-right" style="margin-right: 5%;">
+                <router-link :to="'post/view/' + post['.key']" class=" button is-link"><span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></i></span>&nbsp; Ver mas</router-link>        
+              </div>
+            </div>
+
           </div>
         </footer>
       </div>
