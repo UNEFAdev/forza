@@ -1,7 +1,7 @@
 <template>
   <div class="columns">
     <div class="column">
-      <div v-for="(post, index) in posts" :key="index" class="card card-right ">
+      <div v-for="(post, index) in pages[pageNumber]" :key="index" class="card card-right ">
         <header class="card-header">
           <p class="card-header-title post-title">
             {{post.title}}
@@ -56,6 +56,10 @@
           </div>
         </footer>
       </div>
+      <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <button class="pagination-previous button is-link is-outlined" :disabled="pageNumber == 0" @click="prevPage">Anterior</button>
+        <button class="pagination-next button is-link is-outlined" @click="nextPage" :disabled="pageNumber == pages.length -1">Siguiente</button>
+      </nav>
     </div>
   </div>
 </template>
@@ -70,7 +74,18 @@
     data () {
       return {
         post: '',
-        editorReadMode
+        editorReadMode,
+        pageNumber: 0,
+        count: '',
+        listData: [],
+        lastKey: '',
+        firstKey: '',
+        nextKey: '',
+        keys: [],
+        pages: [],
+        promises : [],
+        size: 7,
+        extraRecord: []
       }
     },
     firebase: {
@@ -80,12 +95,62 @@
       postDate (epoch) {
       if (!epoch) return // if no time return nothing
         return moment(epoch).format('MM/DD/YY - hh:mm')
+      },
+      cutString (string) {
+        let temp = string.replace(/<(?:.|\n)*?>/gm, '')
+        return temp.substring(0, 370) + '...'
+      },
+      nextPage(){
+        this.pageNumber++;
+       
+      },
+      prevPage(){
+        this.pageNumber--;
+      },
+   
+      cursorPag (acumulador, cursor) {
+        this.pages = acumulador || []
+        var query = postsRef.orderByKey().limitToLast(this.size + 1)
+
+        if (cursor) {
+          query = query.endAt(cursor)
+        }
+
+        return query.once('value').then(function (snaps) {
+            var page = []
+            snaps.forEach(function (childSnap) {
+              var item = childSnap.val()
+              item['.key'] = childSnap.key
+              page.unshift(item)
+            })
+            if (page.length > this.size) {
+              this.extraRecord = page.pop()
+              this.pages.push(page)
+              return this.cursorPag(this.pages, this.extraRecord['.key'])
+            } else {
+              this.pages.push(page)
+              return Promise.resolve(this.pages)
+            }
+          }.bind(this))
+
+      }
+
     },
-    cutString (string) {
-      let temp = string.replace(/<(?:.|\n)*?>/gm, '')
-      return temp.substring(0, 370) + '...'
+    computed: {
+      pageCount(){
+      let l = this.pages[this.pageNumber]
+      let s = this.size
+      return Math.floor(l/s)
+      },
+      paginatedData(){
+      const start = this.pageNumber * this.size
+      const end = start + this.size
+      return this.listData.slice(start, end)
+      }
+    },
+    mounted: function () {
+      this.cursorPag()
     }
-  }
 }
 </script>
 

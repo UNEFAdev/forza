@@ -18,7 +18,6 @@
             <navbar></navbar>
             <div class="wrapper">
               <router-view></router-view>
-              <pagination></pagination> 
             </div>
           </div>
         </div>
