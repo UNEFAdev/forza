@@ -14,13 +14,6 @@
   <strong>FORZA CMS</strong>
 </p>
 
-<p>
-  <sub>Made with ❤︎ by
-    <a href="https://github.com/mahnouman">Mahmoud Nouman</a> and 
-    <a href="https://github.com/tamiat/tamiat/graphs/contributors">contributors</a>
-  </sub>
-</p>
-
 </div>
 
 ---
