@@ -25,12 +25,17 @@ export default {
       // this array contains the all the links in the sidebar
       menu: [
         {
-          name: 'posts',
+          name: 'Usuarios',
+          path: '/admin/users',
+          icon: 'fa-user'
+        },
+        {
+          name: 'Entradas',
           path: '/admin/posts',
           icon: 'fa-file-text'
         },
         {
-          name: 'Pages',
+          name: 'Paginas',
           path: '/admin/pages',
           icon: 'fa-archive'
         },
@@ -40,7 +45,7 @@ export default {
           icon: 'fa-picture-o'
         },
         {
-          name: 'Settings',
+          name: 'Opciones',
           path: '/admin/settings',
           icon: 'fa-gear'
         }

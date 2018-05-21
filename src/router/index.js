@@ -8,12 +8,15 @@ import Login from '../components/Admin/Login'
 import SignUp from '../components/Admin/Signup'
 
 // import admin page components
+import Users from '../components/Admin/content/Users'
+import UserNew from '../components/Admin/content/UserNew'
 import Posts from '../components/Admin/content/Posts'
 import PostNew from '../components/Admin/content/PostNew'
 import PostEdit from '../components/Admin/content/PostEdit'
 import Settings from '../components/Admin/content/Settings'
 import Pages from '../components/Admin/content/Pages'
 import Media from '../components/Admin/content/Media'
+// import home page components
 import PostView from '../components/Home/content/PostView'
 import PostMain from '../components/Home/content/PostMain'
 
@@ -34,7 +37,11 @@ export default new Router({
         {
           path: 'post/view/:key',
           component: PostView
-        }
+        },
+        {
+          path: 'sistemas/regulares',
+          component: PostMain
+        },
       ]
     },
     {
@@ -77,6 +84,17 @@ export default new Router({
         {
           path: 'media',
           component: Media
+        },
+        {
+          path: 'users',
+          component: Users,
+          children: [
+            {
+              path: 'new',
+              component: UserNew
+            }
+
+          ]
         }
       ]
     },

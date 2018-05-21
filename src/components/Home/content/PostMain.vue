@@ -73,14 +73,9 @@
     name: 'PostMain',
     data () {
       return {
-        post: '',
         editorReadMode,
         pageNumber: 0,
         count: '',
-        listData: [],
-        lastKey: '',
-        firstKey: '',
-        nextKey: '',
         keys: [],
         pages: [],
         promises : [],
@@ -149,6 +144,7 @@
       }
     },
     mounted: function () {
+      console.log(this.$route.path)
       this.cursorPag()
     }
 }

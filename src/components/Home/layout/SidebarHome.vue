@@ -37,10 +37,18 @@
             <h4 slot="title"><i class="fa fa-laptop" aria-hidden="true"></i> Ing. De Sistemas</h4>
             <p slot="content">          
               <ul>
-                <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
-                <li class="item-menu-inside"><a>CINU</a></li>
-                <li class="item-menu-inside"><a>Docentes</a></li>
-                <li class="item-menu-inside"><a>Egresados</a></li>
+                <li class="item-menu-inside">
+                  <router-link :to="'/sistemas/regulares'">Estudiantes Regulares</router-link>
+                </li>
+                <li class="item-menu-inside">
+                  <router-link :to="'/sistemas/cinu'">CINU</router-link>
+                </li>
+                <li class="item-menu-inside">
+                  <router-link :to="'/sistemas/docentes'">Docentes</router-link>
+                </li>
+                <li class="item-menu-inside">
+                  <router-link :to="'/sistemas/egresados'">Egresados</router-link>
+                </li>
               </ul>
             </p>
           </BulmaAccordionItem>
@@ -136,7 +144,7 @@
   import { BulmaAccordion, BulmaAccordionItem } from 'vue-bulma-accordion'
 
   export default {
-    name: 'cool-component, SidebarHome',
+    name: 'SidebarHome',
     data() {
       return {}
     },

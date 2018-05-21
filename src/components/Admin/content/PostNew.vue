@@ -46,12 +46,28 @@
           <div class="control">
             <div class="select is-info ">
               <select v-model="category">
+                <option disabled value="">Seleccione una Carrera</option>
                 <option value="Sistemas">Sistemas</option>
                 <option value="Enfermeria">Enfermería</option>
                 <option value="Electrica">Eléctrica</option>
-                <option value="Pasantias">Pasantias</option>
                 <option value="Agronomia">Agronomía</option>
                 <option value="Administracion">Administración</option>
+                <option value="Economia">Economia Social</option>
+                <option value="Servicio-Comunitario">Servicio Comunitario</option>
+                <option value="Pasantias">Pasantias</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Escoga el conglomerado de publicación</label>
+          <div class="control">
+            <div class="select is-info ">
+              <select v-model="subcategory">
+                <option disabled value="">Seleccione un conglomerado</option>
+                <option v-for="option in filteredSubCategory" v-bind:value="option.value">
+                  {{ option.text }}
+                </option>
               </select>
             </div>
           </div>
@@ -93,6 +109,7 @@
 import firebase from 'firebase'
 
 import { mediaRef } from '../../../config'
+import { userRef } from '../../../config'
 import editorOptions from './editor-options'
 import imageLoader from '../../../mixins/image-loader'
 import notifier from '../../../mixins/notifier'
@@ -105,13 +122,17 @@ export default {
       body: '',
       author: '',
       category: '',
+      subcategory: '',
+      filteredSub: [],
       tags: '',
       featuredImage: '',
-      editorOptions
+      editorOptions,
+      user: []
     }
   },
   firebase: {
-    media: mediaRef
+    media: mediaRef,
+    users: userRef
   },
   props: ['add-post'],
   mixins: [imageLoader, notifier],
@@ -124,6 +145,7 @@ export default {
           body: this.body,
           author: this.author,
           category: this.category,
+          subcategory: this.subcategory,
           tags: this.tags.replace(/ /g, '').split(','),
           img: this.featuredImage,
           created: Date.now()
@@ -149,6 +171,57 @@ export default {
         })
       })
     }
+  },
+  computed: {
+    filteredSubCategory: function () {
+      var cat = this.category
+      if(cat === 'Sistemas'){
+        return [
+          { text: 'Estudiantes Regulares', value: 'sist-regulares' },
+          { text: 'CINU', value: 'sist-cinu' },
+          { text: 'Egresados', value: 'sist-egresados' },
+          { text: 'Docentes', value: 'sist-docentes' }
+        ]
+      }else if(cat === 'Electrica') {
+        return [
+          { text: 'Estudiantes Regulares', value: 'elec-regulares' },
+          { text: 'CINU', value: 'elec-cinu' },
+          { text: 'Docentes', value: 'elec-docentes' }
+        ]
+      }else if(cat === 'Enfermeria') {
+        return [
+          { text: 'Estudiantes Regulares', value: 'enfer-regulares' },
+          { text: 'CINU', value: 'enfer-cinu' }
+        ]
+      }else if(cat === 'Agronomia') {
+        return [
+          { text: 'Estudiantes Regulares', value: 'agro-regulares' },
+          { text: 'CINU', value: 'agro-cinu' }
+        ]
+      }else if(cat === 'Administracion') {
+        return [
+          { text: 'Estudiantes Regulares', value: 'admin-regulares' },
+          { text: 'CINU', value: 'admin-cinu' }
+        ]
+      }else if(cat === 'Economia') {
+        return [
+          { text: 'Estudiantes Regulares', value: 'econ-regulares' },
+          { text: 'CINU', value: 'econ-cinu' }
+        ]
+      }else if(cat === 'Servicio-Comunitario') {
+        return [
+          { text: 'General', value: 'General' }
+        ]
+      }else if(cat === 'Pasantias') {
+        return [
+          { text: 'General', value: 'General' }
+        ]
+      }
+    }
+  },
+  mounted: function () {
+    
+    console.log(this.user)
   }
 }
 

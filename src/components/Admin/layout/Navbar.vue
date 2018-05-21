@@ -22,7 +22,7 @@
     <div class="navbar-menu" id="navbar" :class="{'is-active': mobileMenuIsActive}">
       <div class="navbar-end">
         <span class="navbar-item">
-          {{currentUser.email}}, {{currentUser.uid}} {{currentUser.category}}
+          {{currentUser.email}}
         </span>
         <span class="navbar-item sign-out" @click="signOut">
           <span class="icon is-medium has-text-centered">
@@ -74,6 +74,9 @@ export default {
   },
   components: {
     modal
+  },
+  mounted: function () {
+    
   }
 }
 
