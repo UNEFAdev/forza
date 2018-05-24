@@ -33,7 +33,7 @@ export default {
           name: 'Entradas',
           path: '/admin/posts',
           icon: 'fa-file-text'
-        },
+        }/*,
         {
           name: 'Paginas',
           path: '/admin/pages',
@@ -48,7 +48,7 @@ export default {
           name: 'Opciones',
           path: '/admin/settings',
           icon: 'fa-gear'
-        }
+        }*/
       ]
     }
   }
