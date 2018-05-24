@@ -2,7 +2,7 @@
   <div class="container users">
 
     <!-- users page title -->
-    <div class="content-heading is-flex">
+    <div class="content-heading is-flex" style="padding-top: 3%;">
       <h3 class="is-size-3">Usuarios</h3>
       <router-link to="/admin/users/new" class="button is-info">Agregar Nuevo Usuario</router-link>
     </div>

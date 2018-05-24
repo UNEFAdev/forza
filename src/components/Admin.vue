@@ -7,7 +7,7 @@
     <!-- The admin page content -->
     <div class="is-fullheight is-vertical-aligned">
       <section class="is-light is-medium is-bold" v-if="$route.name === 'Admin'">
-        <div class="">
+        <div class="wrapper">
           <div class="container has-text-centered" style="top:200px;">
            <figure class="image">
             <img src="/static/img/logo.png" alt="unefa" style="width: 15%; margin: 0 auto;">
