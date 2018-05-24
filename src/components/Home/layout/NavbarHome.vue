@@ -8,17 +8,17 @@
       </div>
     </div>
     <div class="navbar-menu" id="navMenu">
-      <a class="navbar-item has-text-white">
-        Ultima hora
-      </a>
-      <p class="navbar-item has-text-white">
+      <a href="/" class="navbar-item has-text-white" style="padding-left: : 0">
+        <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+     </a>
+      <p class="navbar-item has-text-white" style="padding: 0">
         Ordenar por:
       </p>
       <a class="navbar-item has-text-white">
         <div class="field">
           <div class="control has-icons-left">
             <div class="select">
-              <select>
+              <select style="padding-right: 0">
                 <option selected>Carrera:</option>
                 <option>Ing. De Sistemas</option>
                 <option>Ing. Eléctrica</option>
@@ -37,7 +37,7 @@
         <div class="field">
           <div class="control has-icons-left">
             <div class="select">
-              <select>
+              <select style="padding-right: 0">
                 <option selected>Fecha:</option>
                 <option>Ultimas Publicaciones</option>
                 <option>Publicaciones Antiguas</option>
@@ -53,7 +53,7 @@
         <div class="field">
           <div class="control has-icons-left">
             <div class="select">
-              <select>
+              <select style="padding-right: 0">
                 <option selected>Otros:</option>
                 <option>Servicio Comunitario</option>
                 <option>Pasantías</option>
@@ -77,5 +77,5 @@
 
 <style scoped>
 a.navbar-item:hover, a.navbar-item.is-active, a.navbar-link:hover, a.navbar-link.is-active {
-    background-color: #0459e2;}
+  background-color: #0459e2;}
 </style>

@@ -1,6 +1,6 @@
 {
   "rules": {
-    ".write": "auth.uid === 'hWZPSo9BqJf1ArRvrdwdIsAs6Vm1'",    
+    ".write": "auth.uid === 'BDypN09tyPQ38XK1anDYfhTZFY53'",    
     ".read": true,
     "posts": {
       "$id": {
@@ -39,7 +39,25 @@
     },
     "users": {
       "$uid": {
-        // ".write": "auth != null && auth.uid == $uid && root.child('users').child(auth.uid).child('role').val() === 'admin' "
+        ".write": "auth != null && auth.uid == $uid",
+        "firstname": {
+          ".validate": "newData.isString()"
+        },
+        "lastname": {
+          ".validate": "newData.isString()"
+        },
+        "category": {
+          ".validate": "newData.isString()"
+        },
+        "role": {
+          ".validate": "newData.isString()"
+        },
+        "email": {
+          ".validate": "newData.isString()"
+        },
+        "created": {
+         ".validate": "newData.val() < now"
+        }
       }
     },
     "media": {

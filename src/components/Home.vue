@@ -10,7 +10,7 @@
          </div>
        </div>
      </section>
-     <section class="section">
+     <section class="section ppal">
       <div class="container">
         <div class="columns">
           <sidebar></sidebar>
@@ -18,67 +18,58 @@
             <navbar></navbar>
             <div class="wrapper">
               <router-view></router-view>
-              <pagination></pagination> 
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="section">
+
+  
+<div class="modal"> <!--agregar manualmente el toggle by js-->
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+    <footer class="footer">
       <div class="container">
         <div class="columns is-centered">
           <div class="columm">
             <div class="integrantes is-info">
               <ul id="navlist">
-                <li><strong>Colaboradores:</strong></li>
-                <li><a href="#">Alexander Rodríguez</a></li>
-                <li><a href="#">Brandon Rojas</a></li>
-                <li><a href="#">Erickson Diaz</a></li>
-                <li><a href="#">Miguel Carvajal</a></li>
-                <li><a href="#">Naudy Linárez</a></li>
-                <li><a href="#">Korina Dávila</a></li>
+                <li><strong>Créditos:</strong></li>
+                <li><a href="https://github.com/AlexR1712" target="_blank">Alexander Rodríguez</a></li>
+                <li><a href="https://github.com/brandondrl" target="_blank">Brandon Rojas</a></li>
+                <li><a href="https://github.com/tatuco88" target="_blank">Erickson Diaz</a></li>
+                <li><a href="javascript:void(0);">Miguel Carvajal</a></li>
+                <li><a href="https://github.com/ViT4RGh0ST" target="_blank">Naudy Linárez</a></li>
+                <li><a href="javascript:void(0);">Korina Dávila</a></li>
               </ul>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <footer class="footer">
-      <div class="container">
-        <div class="columns">
+        <div class="columns has-text-centered">
           <div class="column">
-              &copy; Forza System - UNEFA Núcleo Lara
+              <div>&copy; Universidad Nacional Experimental Politécnica de la Fuerza Armada Nacional - {{(new Date()).getFullYear()}}</div>
           </div>
-        <!--  <div class="column is-one-fifth">
-            <p class="buttons is-centered">
-              <a class="button is-small is-link is-inverted is-outlined" style="border: none;">
-                <span class="icon fa-lg">
-                  <i class="fa fa-telegram fa-lg" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="button is-small is-success is-inverted is-outlined" style="border: none;">
-                <span class="icon fa-lg">
-                  <i class="fa fa-whatsapp fa-lg" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="button is-small is-link is-inverted is-outlined" style="border: none;">
-                <span class="icon fa-lg">
-                  <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
-                </span>
-              </a>
-            </p>
-          </div>-->
         </div>
       </div>
     </footer>
   </div>
 </template>
 <style type="text/css">
-.bordown{border-bottom: 1px solid #dbdbdb;}
-.card-right{margin:3% 0% 5%; webkit-box-shadow: 0 2px 3px #211f1f40, 1px 10px 15px 2px #211f1f40 !important; box-shadow: 0 2px 3px #211f1f40, 1px 10px 15px 2px #211f1f40 !important;}
-/*########## custom styles 06-05-2018*/
-.card-header-title {background: #3273dc; color: white;}
-#navlist li {display: inline; list-style-type: none; padding-right: 20px; }
+
 </style>
 
 <script>
