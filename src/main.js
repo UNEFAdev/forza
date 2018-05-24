@@ -6,6 +6,7 @@ import router from './router'
 import VueFire from 'vuefire'
 import VueQuillEditor from 'vue-quill-editor'
 
+
 // import external stylesheets
 import '../node_modules/font-awesome/css/font-awesome.css'
 import '../node_modules/bulma/css/bulma.css'

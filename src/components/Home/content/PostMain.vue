@@ -158,6 +158,8 @@ export default {
           return 'General'
         case 'pas':
           return 'General'
+        case 'todo':
+          return 'General'
         default:
       }
     },
