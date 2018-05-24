@@ -54,7 +54,7 @@
             </div>
             <div class="column is-one-quarter">
               <div class="buttons has-addons is-right" style="margin-right: 5%;">
-                <router-link :to="'post/view/' + post['.key']" class=" button is-link" :class="colorPost (post.category)"><span class="icon"><i
+                <router-link :to="'/post/view/' + post['.key']" class=" button is-link" :class="colorPost (post.category)"><span class="icon"><i
                   class="fa fa-plus" aria-hidden="true"></i></i></span>&nbsp; Ver mas
                 </router-link>
               </div>
