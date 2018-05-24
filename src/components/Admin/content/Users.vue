@@ -34,6 +34,7 @@
             <td class="firstname-cell">{{user.firstname}}</td>
             <td class="lastname-cell">{{user.lastname}}</td>
             <td class="email-cell">{{user.email}}</td>
+            <td class="category-cell">{{user.category}}</td>
             <td class="role-cell">{{user.role}}</td>
           </tr>
         </tbody>
@@ -50,6 +51,7 @@
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Correo</th>
+            <th>Categoria</th>
             <th>Rol</th>
           </tr>
         </thead>
@@ -66,6 +68,7 @@
             <td class="firstname-cell">{{user.firstname}}</td>
             <td class="lastname-cell">{{user.lastname}}</td>
             <td class="email-cell">{{user.email}}</td>
+            <td class="category-cell">{{user.category}}</td>
             <td class="role-cell">{{user.role}}</td>
           </tr>
         </tbody>
@@ -163,11 +166,11 @@ export default {
   }
 
   .firstname-cell {
-    width: 20%;
+    width: 15%;
   }
 
   .lastname-cell {
-    width: 20%;
+    width: 15%;
   }
 
   .email-cell {
@@ -175,7 +178,10 @@ export default {
   }
 
   .role-cell {
-    width: 20%;
+    width: 15%;
+  }
+  .category-cell {
+    width: 15%;
   }
 
   h5 {

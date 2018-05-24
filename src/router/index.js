@@ -53,6 +53,58 @@ export default new Router({
         {
           path: 'sistemas/docentes',
           component: PostMain
+        },
+        {
+          path: 'electrica/regulares',
+          component: PostMain
+        },
+        {
+          path: 'electrica/cinu',
+          component: PostMain
+        },
+        {
+          path: 'electrica/docentes',
+          component: PostMain
+        },
+        {
+          path: 'enfermeria/regulares',
+          component: PostMain
+        },
+        {
+          path: 'enfermeria/cinu',
+          component: PostMain
+        },
+        {
+          path: 'administracion/regulares',
+          component: PostMain
+        },
+        {
+          path: 'administracion/cinu',
+          component: PostMain
+        },
+        {
+          path: 'economia/regulares',
+          component: PostMain
+        },
+        {
+          path: 'economia/cinu',
+          component: PostMain
+        },
+        {
+          path: 'agronomia/regulares',
+          component: PostMain
+        },
+        {
+          path: 'agronmia/cinu',
+          component: PostMain
+        },
+        {
+          path: 'pasantias',
+          component: PostMain
+        },
+        {
+          path: 'servicio-comunitario',
+          component: PostMain
         }
       ]
     },
@@ -60,11 +112,6 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
-    },
-    {
-      path: '/signup',
-      name: 'SignUp',
-      component: SignUp
     },
     {
       path: '/admin',

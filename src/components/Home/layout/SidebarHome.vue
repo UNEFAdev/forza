@@ -11,8 +11,8 @@
         <div class="card-content">
           <ul class="menu-list">
             <li class="item-menu"><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
-            <li class="item-menu"><a><i class="fa fa-globe" aria-hidden="true"></i> Servicio Comunitario</a></li>
-            <li class="item-menu"><a><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pasantías</a></li>
+            <li class="item-menu"><a href="/servicio-comunitario"><i class="fa fa-globe" aria-hidden="true"></i> Servicio Comunitario</a></li>
+            <li class="item-menu"><a href="/pasantias"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pasantías</a></li>
           </ul>
         </div>
         <p class="card-header-title menu-label">
@@ -58,9 +58,9 @@
             <h4 slot="title"><i class="fa fa-bolt" aria-hidden="true"></i> Ing. Eléctrica</h4>
             <p slot="content">
               <ul>
-                <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
-                <li class="item-menu-inside"><a>CINU</a></li>
-                <li class="item-menu-inside"><a>Docentes</a></li>
+                <li class="item-menu-inside"><a href="/electrica/regulares">Estudiantes regulares</a></li>
+                <li class="item-menu-inside"><a href="/electrica/cinu">CINU</a></li>
+                <li class="item-menu-inside"><a href="/electrica/docentes">Docentes</a></li>
               </ul>
             </p>
           </BulmaAccordionItem>
@@ -70,8 +70,8 @@
             <h4 slot="title"><i class="fa fa-pagelines" aria-hidden="true"></i> Ing. Agronómica</h4>
             <p slot="content">
               <ul>
-                <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
-                <li class="item-menu-inside"><a>CINU</a></li>
+                <li class="item-menu-inside"><a href="/agronomia/regulares">Estudiantes regulares</a></li>
+                <li class="item-menu-inside"><a href="/agronomia/cinu">CINU</a></li>
               </ul>
             </p>
           </BulmaAccordionItem>
@@ -81,8 +81,8 @@
             <h4 slot="title"><i class="fa fa-stethoscope" aria-hidden="true"></i> TSU. Enfermería</h4>
             <p slot="content">
               <ul>
-                <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
-                <li class="item-menu-inside"><a>CINU</a></li>
+                <li class="item-menu-inside"><a href="/enfermeria/regulares">Estudiantes regulares</a></li>
+                <li class="item-menu-inside"><a href="/enfermeria/cinu">CINU</a></li>
               </ul>
             </p>
           </BulmaAccordionItem>
@@ -92,8 +92,8 @@
             <h4 slot="title"><i class="fa fa-archive" aria-hidden="true"></i> Lic. Administración y gestión municipal</h4>
             <p slot="content">
               <ul>
-                <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
-                <li class="item-menu-inside"><a>CINU</a></li>
+                <li class="item-menu-inside"><a href="/administracion/regulares">Estudiantes regulares</a></li>
+                <li class="item-menu-inside"><a href="/administracion/cinu">CINU</a></li>
               </ul>
             </p>
           </BulmaAccordionItem>
@@ -103,8 +103,8 @@
             <h4 slot="title"><i class="fa fa-university" aria-hidden="true"></i> Lic. Economía Social</h4>
             <p slot="content">
               <ul>
-                <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
-                <li class="item-menu-inside"><a>CINU</a></li>
+                <li class="item-menu-inside"><a href="/economia/regulares">Estudiantes regulares</a></li>
+                <li class="item-menu-inside"><a href="/economia/cinu">CINU</a></li>
               </ul>
             </p>
           </BulmaAccordionItem>
