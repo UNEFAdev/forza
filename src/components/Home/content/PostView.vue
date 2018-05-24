@@ -5,8 +5,8 @@
       <div class="media-content">
         <div class="content">
           <a href="/" class="has-text-weight-semibold has-text-link"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</a>
-          <p class="is-right has-text-right" style="margin: 0;padding: 0;"><span class="is-size-7">Carrera:</span><strong class="has-text-weight-semibold has-text-link">{{post.category}} Ing.Sistemas</strong></p>
-          <p class="is-right has-text-right"><span class="is-size-7">Autor:</span><strong class="has-text-weight-semibold has-text-link"> {{post.author}}</strong><br><strong class="is-size-7">{{postDate(post.created)}}</strong></p>
+          <p class="is-right has-text-right" style="margin: 0;padding: 0;"><span class="is-size-7">Relacionado: </span><strong class="has-text-weight-semibold has-text-link">{{post.category}}</strong></p>
+          <p class="is-right has-text-right"><span class="is-size-7">Autor: </span><strong class="has-text-weight-semibold has-text-link"> {{post.author}}</strong><br><strong class="is-size-7">{{postDate(post.created)}}</strong></p>
           <h4 class="has-text-centered">
             <strong class="has-text-link">{{post.title}}</strong>
           </h4>
@@ -28,7 +28,7 @@
                 <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
               </span>
             </a>
-          </p>   
+          </p>
         </div>
       </div>
     </article>
@@ -47,13 +47,13 @@ export default {
     }
   },
   mounted () {
-   
+
     this.$firebaseRefs.posts.orderByKey().equalTo(this.$route.params.key).limitToFirst(1).once('value').then(function (snapshot) {
       let shotemp = snapshot.val()
       let key = Object.keys(shotemp)
       this.post = shotemp[key[0]]
     }.bind(this))
-        
+
   },
   firebase: {
     posts: postsRef

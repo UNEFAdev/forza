@@ -46,12 +46,14 @@
           <div class="control column is-narrow">
             <div class="select is-info ">
               <select v-model="category">
-                <option value="Sistemas">Sistemas</option>
+                <option value="Sistemas">Ing. Sistemas</option>
                 <option value="Enfermeria">Enfermería</option>
-                <option value="Electrica">Eléctrica</option>
+                <option value="Electrica">Ing. Eléctrica</option>
+                <option value="Agronomia">Ing. Agronómica</option>
+                <option value="Economia">Economia Social</option>
+                <option value="Administracion">Administracion y gestión Social</option>
+                <option value="Servicio Comunitario">Servicio Comunitario</option>
                 <option value="Pasantias">Pasantias</option>
-                <option value="Agronomia">Agronomía</option>
-                <option value="Administracion">Administración</option>
               </select>
             </div>
           </div>

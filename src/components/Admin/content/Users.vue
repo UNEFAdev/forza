@@ -3,22 +3,24 @@
 
     <!-- users page title -->
     <div class="content-heading is-flex">
-      <h3 class="is-size-3">Users</h3>
-      <router-link to="/admin/users/new" class="button is-info">Add New</router-link>
+      <h3 class="is-size-3">Usuarios</h3>
+      <router-link to="/admin/users/new" class="button is-info">Agregar Nuevo Usuario</router-link>
     </div>
 
     <!-- the new user form loaded via vue loader -->
     <router-view></router-view>
 
-    <h5 class="is-size-5">New Users</h5>
+    <h5 class="is-size-5">Usuarios nuevos</h5>
     <!-- guests' requests table -->
     <div class="box">
       <table class="table is-fullwidth is-striped">
         <thead>
           <tr>
-            <th>username</th>
-            <th>email</th>
-            <th>role</th>
+            <th>Nombre de Usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Rol</th>
           </tr>
         </thead>
         <tbody>
@@ -26,9 +28,11 @@
             <td class="username-cell">
               {{user.username}}
               <div class="actions">
-                <span @click="approve(user)" class="approve has-text-success">Approve</span>
+                <span @click="approve(user)" class="approve has-text-success">Aprobar</span>
               </div>
             </td>
+            <td class="firstname-cell">{{user.firstname}}</td>
+            <td class="lastname-cell">{{user.lastname}}</td>
             <td class="email-cell">{{user.email}}</td>
             <td class="role-cell">{{user.role}}</td>
           </tr>
@@ -36,15 +40,17 @@
       </table>
     </div>
 
-    <h5 class="is-size-5">Administrators</h5>
+    <h5 class="is-size-5">Administradores</h5>
     <!-- the administrators table -->
     <div class="box">
       <table class="table is-fullwidth is-striped">
         <thead>
           <tr>
-            <th>username</th>
-            <th>email</th>
-            <th>role</th>
+            <th>Nombre de Usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Rol</th>
           </tr>
         </thead>
         <tbody>
@@ -54,9 +60,11 @@
               <div class="actions">
                 <!-- display a delete button below the current logged in user -->
                 <span v-if="currentUser.uid === user['.key']" @click="deleteCurrentUser" class=" has-text-danger">Delete</span>
-                <span v-else @click="ban(user)" class="ban has-text-danger">Ban</span>
+                <span v-else @click="ban(user)" class="ban has-text-danger">Banear</span>
               </div>
             </td>
+            <td class="firstname-cell">{{user.firstname}}</td>
+            <td class="lastname-cell">{{user.lastname}}</td>
             <td class="email-cell">{{user.email}}</td>
             <td class="role-cell">{{user.role}}</td>
           </tr>
@@ -90,6 +98,9 @@ export default {
       this.$firebaseRefs.users.child(user['.key']).set({
         username: user.username,
         email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        category: user.category,
         role: 'admin'
       })
     },
@@ -97,6 +108,9 @@ export default {
     ban (user) {
       this.$firebaseRefs.users.child(user['.key']).set({
         username: user.username,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        category: user.category,
         email: user.email,
         role: 'guest'
       })
@@ -145,11 +159,19 @@ export default {
   }
 
   .username-cell {
-    width: 35%;
+    width: 20%;
+  }
+
+  .firstname-cell {
+    width: 20%;
+  }
+
+  .lastname-cell {
+    width: 20%;
   }
 
   .email-cell {
-    width: 45%;
+    width: 20%;
   }
 
   .role-cell {
