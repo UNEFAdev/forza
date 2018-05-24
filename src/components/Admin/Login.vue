@@ -1,7 +1,7 @@
 <template>
   <div class="container login bulma">
     <div class="columns is-centered is-vertical-aligned is-fullheight is-flex">
-      <div class="column box is-one-third">
+      <div class="column box is-one-third log">
 
         <!-- notification -->
         <div v-if="notification.message" :class="'notification is-' + notification.type">
@@ -10,7 +10,7 @@
 
         <!-- tamiat CMS logo -->
         <div class="columns is-flex is-centered is-mobile">
-            <router-link to="/"><p class="is-size-3">SISTEMA FORZA</p></router-link>
+            <router-link to="/"><p class="is-size-3" style="color:#3273dc;">FORZA SYSTEM</p></router-link>
         </div>
 
         <!-- email -->
@@ -86,5 +86,15 @@ export default {
 .login p {
   margin-top: 1em;
   font-size: 0.8em;
+}
+html, #app{
+  background-color: #363c61;
+background-image: url("https://www.transparenttextures.com/patterns/concrete-wall-3.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+.log{
+      webkit-box-shadow: 0 2px 3px #211f1f40, 1px 10px 15px 2px #211f1f40 !important;
+    -webkit-box-shadow: 0 2px 3px #211f1f40, 1px 10px 15px 2px #211f1f40 !important;
+    box-shadow: 0 2px 3px #211f1f40, 1px 10px 15px 2px #211f1f40 !important;
 }
 </style>
