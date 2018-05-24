@@ -2,9 +2,9 @@
   <div class="container posts" id="posts">
 
     <!-- posts page title -->
-    <div class="content-heading is-flex">
+    <div class="content-heading is-flex" style="padding: 5% 0 1%;">
       <h3 class="is-size-3">Publicaciones</h3>
-      <router-link to="/admin/posts/new" class="button is-info">Crear Publicación</router-link>
+      <router-link to="/admin/posts/new" class="button is-info" style="margin: 0 2%;">Crear Publicación</router-link>
     </div>
 
     <!-- notification -->
