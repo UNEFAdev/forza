@@ -89,7 +89,7 @@ export default {
     addPost (post) {
       this.$firebaseRefs.posts.push(post).then((snap) => {
         axios.post('https://discomycetous-male.000webhostapp.com/process.php', {
-          'type': 'POST',
+          'type': 'post',
           'channels': ['-1001242019501'],
           'title': post.title,
           'message': this.cutString(post.body),
@@ -105,14 +105,14 @@ export default {
           // JSON responses are automatically parsed.
           console.log(response.data)
         }).catch(e => {
-          this.errors.push(e)
+          console.log(e.response.data)
         })
         this.showNotification('success', 'Entrada publicada correctamente')
       })
     },
     cutString (string) {
       let temp = string.replace(/<(?:.|\n)*?>/gm, '')
-      return temp.substring(0, 100) + '...'
+      return temp.substring(0, 20) + '...'
     },
     deletePost (post) {
       // delete post form firebase

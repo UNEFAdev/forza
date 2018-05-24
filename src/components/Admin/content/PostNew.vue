@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="field">
-          <label class="label">Escoga la carrera de la publicación</label>
+          <label class="label">Escoja la carrera de la publicación</label>
           <div class="control">
             <div class="select is-info ">
               <select v-model="category">
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="field">
-          <label class="label">Escoga el conglomerado de publicación</label>
+          <label class="label">Escoja el conglomerado de publicación</label>
           <div class="control">
             <div class="select is-info ">
               <select v-model="subcategory">
