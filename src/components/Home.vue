@@ -15,7 +15,7 @@
         <div class="columns">
           <sidebar></sidebar>
           <div class="column">
-            <navbar></navbar>
+            <!--<navbar></navbar>-->
             <div class="wrapper">
               <router-view></router-view>
             </div>
