@@ -3,12 +3,12 @@
     <div class="column">
       <div v-for="(post, index) in pages[pageNumber]" :key="index" class="card card-right ">
         <header class="card-header">
-          <p class="card-header-title post-title">
+          <p class="card-header-title" :class="colorPost (post.category)">
             {{post.title}}
           </p>
         </header>
-        <div class="card-content">
-          <div class="content has-text-justified">
+        <div class="card-content ">
+          <div class="content has-text-justified ">
             {{cutString(post.body)}}
           </div>
         </div>
@@ -48,13 +48,13 @@
                   Relacionado: <strong class="has-text-weight-semibold has-text-link">{{post.category}}</strong>
                 </li>
                 <li class=" is-size-7">
-                  Conglomerado: <strong class="has-text-weight-semibold has-text-link">{{post.subcategory}}</strong>
+                  Conglomerado: <strong class="has-text-weight-semibold has-text-link">{{subcategoryParse(post.subcategory)}}</strong>
                 </li>
               </ul>
             </div>
             <div class="column is-one-quarter">
               <div class="buttons has-addons is-right" style="margin-right: 5%;">
-                <router-link :to="'post/view/' + post['.key']" class=" button is-link"><span class="icon"><i
+                <router-link :to="'post/view/' + post['.key']" class=" button is-link" :class="colorPost (post.category)"><span class="icon"><i
                   class="fa fa-plus" aria-hidden="true"></i></i></span>&nbsp; Ver mas
                 </router-link>
               </div>
@@ -99,6 +99,68 @@ export default {
     posts: postsRef
   },
   methods: {
+    colorPost (text) {
+      switch (text) {
+        case 'Sistemas':
+          return 'sistemas'
+        case 'Electrica':
+          return 'electrica'
+        case 'Servicio-Comunitario':
+          return 'servicio'
+        case 'Pasantias':
+          return 'pasantia'
+        case 'Economia':
+          return 'economia'
+        case 'Administracion':
+          return 'administracion'
+        case 'Enfermeria':
+          return 'enfermeria'
+        case 'Agronomia':
+          return 'agronomia'
+        case 'Todo':
+          return 'general'
+        default:
+      }
+    },
+    subcategoryParse (text) {
+      switch (text) {
+        case 'sist-regulares':
+          return 'Regulares'
+        case 'sist-egresados':
+          return 'Egresados'
+        case 'sist-cinu':
+          return 'CINU'
+        case 'sist-docentes':
+          return 'Docentes'
+        case 'elec-regulares':
+          return 'Regulares'
+        case 'elec-cinu':
+          return 'CINU'
+        case 'elec-docentes':
+          return 'Docentes'
+        case 'enfer-regulares':
+          return 'Regulares'
+        case 'enfer-cinu':
+          return 'CINU'
+        case 'agro-regulares':
+          return 'Regulares'
+        case 'agro-cinu':
+          return 'CINU'
+        case 'admin-regulares':
+          return 'Regulares'
+        case 'admin-cinu':
+          return 'CINU'
+        case 'econ-regulares':
+          return 'Regulares'
+        case 'econ-cinu':
+          return 'CINU'
+        case 'ser-con':
+          return 'General'
+        case 'pas':
+          return 'General'
+        default:
+      }
+    },
     postDate (epoch) {
       if (!epoch) return // if no time return nothing
       return moment(epoch).format('MM/DD/YY - hh:mm')
@@ -135,6 +197,22 @@ export default {
         var query = postsRef.orderByChild('subcategory').equalTo('enfer-regulares').limitToLast(this.size + 1)
       } else if (this.$route.path === '/enfermeria/cinu') {
         var query = postsRef.orderByChild('subcategory').equalTo('enfer-cinu').limitToLast(this.size + 1)
+      } else if (this.$route.path === '/agronomia/regulares') {
+        var query = postsRef.orderByChild('subcategory').equalTo('agro-regulares').limitToLast(this.size + 1)
+      } else if (this.$route.path === '/agronomia/cinu') {
+        var query = postsRef.orderByChild('subcategory').equalTo('agro-cinu').limitToLast(this.size + 1)
+      } else if (this.$route.path === '/administracion/regulares') {
+        var query = postsRef.orderByChild('subcategory').equalTo('admin-regulares').limitToLast(this.size + 1)
+      } else if (this.$route.path === '/administracion/cinu') {
+        var query = postsRef.orderByChild('subcategory').equalTo('admin-cinu').limitToLast(this.size + 1)
+      } else if (this.$route.path === '/economia/regulares') {
+        var query = postsRef.orderByChild('subcategory').equalTo('econ-regulares').limitToLast(this.size + 1)
+      } else if (this.$route.path === '/economia/cinu') {
+        var query = postsRef.orderByChild('subcategory').equalTo('econ-cinu').limitToLast(this.size + 1)
+      } else if (this.$route.path === '/servicio-comunitario') {
+        var query = postsRef.orderByChild('subcategory').equalTo('ser-con').limitToLast(this.size + 1)
+      } else if (this.$route.path === '/pasantias') {
+        var query = postsRef.orderByChild('subcategory').equalTo('pas').limitToLast(this.size + 1)
       }
 
       if (cursor) {
@@ -179,5 +257,33 @@ export default {
 </script>
 
 <style scoped>
+
+  .enfermeria {
+    background-color: rgba(0, 166, 28, 0.81);
+  }
+  .sistemas {
+    background-color: #3273dc;
+  }
+  .general {
+    background-color: rgba(0, 135, 165, 0.81);
+  }
+  .electrica {
+    background-color: rgba(165, 0, 38, 0.81);
+  }
+  .economia {
+    background-color: rgba(165, 91, 0, 0.81);
+  }
+  .administracion {
+    background-color: rgba(101, 0, 164, 0.81);
+  }
+  .servicio {
+    background-color: rgba(175, 59, 57, 0.8);
+  }
+  .pasantia {
+    background-color: rgba(0, 175, 145, 0.8);
+  }
+  .agronomia {
+    background-color: rgba(134, 185, 0, 0.81);
+  }
 
 </style>

@@ -1,6 +1,6 @@
 {
   "rules": {
-    ".write": "auth.uid === 'BDypN09tyPQ38XK1anDYfhTZFY53'",    
+    ".write": "auth != null",
     ".read": true,
     "posts": {
       "$id": {
@@ -17,7 +17,13 @@
           ".validate": "newData.isString()"
         },
         "created": {
-          // ".validate": "newData.val() < now"
+          ".validate": "newData.val() < now"
+        },
+        "category": {
+          ".validate": "newData.isString()"
+        },
+        "subcategory": {
+          ".validate": "newData.isString()"
         }
       }
     },
@@ -56,7 +62,7 @@
           ".validate": "newData.isString()"
         },
         "created": {
-         ".validate": "newData.val() < now"
+          ".validate": "newData.val() < now"
         }
       }
     },

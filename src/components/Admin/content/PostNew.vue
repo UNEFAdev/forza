@@ -199,7 +199,7 @@ export default {
         ]
       } else if (cat === 'Todo') {
         return [
-          { text: 'General', value: 'Todo' }
+          { text: 'General', value: 'todo' }
         ]
       }
     },
@@ -239,6 +239,14 @@ export default {
         ]
       } else if (category === 'Todo') {
         return [
+          { text: 'Sistemas', value: 'Sistemas' },
+          { text: 'Electrica', value: 'Electrica' },
+          { text: 'Enfermeria', value: 'Enfermeria' },
+          { text: 'Economía', value: 'Economia' },
+          { text: 'Administración', value: 'Administracion' },
+          { text: 'Agronomía', value: 'Agronomia' },
+          { text: 'Pasantias', value: 'Pasantias' },
+          { text: 'Servicio Comunitario', value: 'Servicio-Comunitario' },
           { text: 'General', value: 'Todo' }
         ]
       }
