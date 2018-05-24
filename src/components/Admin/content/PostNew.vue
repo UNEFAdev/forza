@@ -24,15 +24,6 @@
       <!-- new post right sidebar -->
       <div class="column is-one-third">
 
-        <!-- author -->
-        <div class="field">
-          <label class="label">Autor</label>
-          <div class="control">
-            <input type="text" class="input" v-model="author" maxlength="25" required>
-            <p>Este campo es para cuestiones de demostración</p>
-          </div>
-        </div>
-
         <!-- tags -->
         <div class="field">
           <label class="label">Etiquetas</label>
@@ -47,14 +38,9 @@
             <div class="select is-info ">
               <select v-model="category">
                 <option disabled value="">Seleccione una Carrera</option>
-                <option value="Sistemas">Sistemas</option>
-                <option value="Enfermeria">Enfermería</option>
-                <option value="Electrica">Eléctrica</option>
-                <option value="Agronomia">Agronomía</option>
-                <option value="Administracion">Administración</option>
-                <option value="Economia">Economia Social</option>
-                <option value="Servicio-Comunitario">Servicio Comunitario</option>
-                <option value="Pasantias">Pasantias</option>
+                <option v-for="option in filteredCategory" v-bind:value="option.value">
+                  {{ option.text }}
+                </option>
               </select>
             </div>
           </div>
@@ -107,9 +93,7 @@
 
 <script>
 import firebase from 'firebase'
-
-import { mediaRef } from '../../../config'
-import { userRef } from '../../../config'
+import { mediaRef, usersRef } from '../../../config'
 import editorOptions from './editor-options'
 import imageLoader from '../../../mixins/image-loader'
 import notifier from '../../../mixins/notifier'
@@ -118,6 +102,7 @@ export default {
   name: 'post-new',
   data () {
     return {
+      currentUser: firebase.auth().currentUser,
       title: '',
       body: '',
       author: '',
@@ -130,10 +115,6 @@ export default {
       user: []
     }
   },
-  firebase: {
-    media: mediaRef,
-    users: userRef
-  },
   props: ['add-post'],
   mixins: [imageLoader, notifier],
   methods: {
@@ -143,7 +124,7 @@ export default {
         this.addPost({
           title: this.title,
           body: this.body,
-          author: this.author,
+          author: this.user.firstname + ' ' + this.user.lastname,
           category: this.category,
           subcategory: this.subcategory,
           tags: this.tags.replace(/ /g, '').split(','),
@@ -175,53 +156,104 @@ export default {
   computed: {
     filteredSubCategory: function () {
       var cat = this.category
-      if(cat === 'Sistemas'){
+      if (cat === 'Sistemas') {
         return [
           { text: 'Estudiantes Regulares', value: 'sist-regulares' },
           { text: 'CINU', value: 'sist-cinu' },
           { text: 'Egresados', value: 'sist-egresados' },
           { text: 'Docentes', value: 'sist-docentes' }
         ]
-      }else if(cat === 'Electrica') {
+      } else if (cat === 'Electrica') {
         return [
           { text: 'Estudiantes Regulares', value: 'elec-regulares' },
           { text: 'CINU', value: 'elec-cinu' },
           { text: 'Docentes', value: 'elec-docentes' }
         ]
-      }else if(cat === 'Enfermeria') {
+      } else if (cat === 'Enfermeria') {
         return [
           { text: 'Estudiantes Regulares', value: 'enfer-regulares' },
           { text: 'CINU', value: 'enfer-cinu' }
         ]
-      }else if(cat === 'Agronomia') {
+      } else if (cat === 'Agronomia') {
         return [
           { text: 'Estudiantes Regulares', value: 'agro-regulares' },
           { text: 'CINU', value: 'agro-cinu' }
         ]
-      }else if(cat === 'Administracion') {
+      } else if (cat === 'Administracion') {
         return [
           { text: 'Estudiantes Regulares', value: 'admin-regulares' },
           { text: 'CINU', value: 'admin-cinu' }
         ]
-      }else if(cat === 'Economia') {
+      } else if (cat === 'Economia') {
         return [
           { text: 'Estudiantes Regulares', value: 'econ-regulares' },
           { text: 'CINU', value: 'econ-cinu' }
         ]
-      }else if(cat === 'Servicio-Comunitario') {
+      } else if (cat === 'Servicio-Comunitario') {
         return [
-          { text: 'General', value: 'General' }
+          { text: 'General', value: 'ser-con' }
         ]
-      }else if(cat === 'Pasantias') {
+      } else if (cat === 'Pasantias') {
         return [
-          { text: 'General', value: 'General' }
+          { text: 'General', value: 'pas' }
+        ]
+      } else if (cat === 'Todo') {
+        return [
+          { text: 'General', value: 'Todo' }
+        ]
+      }
+    },
+    filteredCategory: function () {
+      var category = this.user.category
+      if (category === 'Sistemas') {
+        return [
+          { text: 'Sistemas', value: 'Sistemas' }
+        ]
+      } else if (category === 'Electrica') {
+        return [
+          { text: 'Electrica', value: 'Electrica' }
+        ]
+      } else if (category === 'Enfermeria') {
+        return [
+          { text: 'Enfermeria', value: 'Enfermeria' }
+        ]
+      } else if (category === 'Agronomia') {
+        return [
+          { text: 'Agronomía', value: 'Agronomia' }
+        ]
+      } else if (category === 'Administracion') {
+        return [
+          { text: 'Administración', value: 'Administracion' }
+        ]
+      } else if (category === 'Economia') {
+        return [
+          { text: 'Economía', value: 'Economia' }
+        ]
+      } else if (category === 'Servicio-Comunitario') {
+        return [
+          { text: 'Servicio Comunitario', value: 'Servicio-Comunitario' }
+        ]
+      } else if (category === 'Pasantias') {
+        return [
+          { text: 'Pasantias', value: 'Pasantias' }
+        ]
+      } else if (category === 'Todo') {
+        return [
+          { text: 'General', value: 'Todo' }
         ]
       }
     }
   },
   mounted: function () {
-    
-    console.log(this.user)
+    this.$firebaseRefs.users.orderByKey().equalTo(this.currentUser.uid).limitToFirst(1).once('value').then(function (snapshot) {
+      let values = snapshot.val()
+      let key = Object.keys(values)
+      this.user = values[key[0]]
+    }.bind(this))
+  },
+  firebase: {
+    media: mediaRef,
+    users: usersRef
   }
 }
 

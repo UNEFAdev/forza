@@ -13,7 +13,7 @@
             <li class="item-menu"><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
             <li class="item-menu"><a><i class="fa fa-globe" aria-hidden="true"></i> Servicio Comunitario</a></li>
             <li class="item-menu"><a><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pasantías</a></li>
-          </ul>   
+          </ul>
         </div>
         <p class="card-header-title menu-label">
           Carreras
@@ -30,24 +30,24 @@
         duration: '.5s',
         timerFunc: 'ease',
       }"
-      > 
+      >
       <div class="menu">
         <ul class="menu-list">
           <li><BulmaAccordionItem>
             <h4 slot="title"><i class="fa fa-laptop" aria-hidden="true"></i> Ing. De Sistemas</h4>
-            <p slot="content">          
+            <p slot="content">
               <ul>
                 <li class="item-menu-inside">
-                  <router-link :to="'/sistemas/regulares'">Estudiantes Regulares</router-link>
+                  <a href="/sistemas/regulares">Estudiantes Regulares</a>
                 </li>
                 <li class="item-menu-inside">
-                  <router-link :to="'/sistemas/cinu'">CINU</router-link>
+                  <a href="/sistemas/cinu">CINU</a>
                 </li>
                 <li class="item-menu-inside">
-                  <router-link :to="'/sistemas/docentes'">Docentes</router-link>
+                  <a href="/sistemas/docentes">Docentes</a>
                 </li>
                 <li class="item-menu-inside">
-                  <router-link :to="'/sistemas/egresados'">Egresados</router-link>
+                  <a href="/sistemas/egresados">Egresados</a>
                 </li>
               </ul>
             </p>
@@ -56,7 +56,7 @@
         <li>
           <BulmaAccordionItem>
             <h4 slot="title"><i class="fa fa-bolt" aria-hidden="true"></i> Ing. Eléctrica</h4>
-            <p slot="content">          
+            <p slot="content">
               <ul>
                 <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
                 <li class="item-menu-inside"><a>CINU</a></li>
@@ -68,7 +68,7 @@
         <li>
           <BulmaAccordionItem>
             <h4 slot="title"><i class="fa fa-pagelines" aria-hidden="true"></i> Ing. Agronómica</h4>
-            <p slot="content">          
+            <p slot="content">
               <ul>
                 <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
                 <li class="item-menu-inside"><a>CINU</a></li>
@@ -79,7 +79,7 @@
         <li>
           <BulmaAccordionItem>
             <h4 slot="title"><i class="fa fa-stethoscope" aria-hidden="true"></i> TSU. Enfermería</h4>
-            <p slot="content">          
+            <p slot="content">
               <ul>
                 <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
                 <li class="item-menu-inside"><a>CINU</a></li>
@@ -90,7 +90,7 @@
         <li>
           <BulmaAccordionItem>
             <h4 slot="title"><i class="fa fa-archive" aria-hidden="true"></i> Lic. Administración y gestión municipal</h4>
-            <p slot="content">          
+            <p slot="content">
               <ul>
                 <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
                 <li class="item-menu-inside"><a>CINU</a></li>
@@ -101,7 +101,7 @@
         <li>
           <BulmaAccordionItem>
             <h4 slot="title"><i class="fa fa-university" aria-hidden="true"></i> Lic. Economía Social</h4>
-            <p slot="content">          
+            <p slot="content">
               <ul>
                 <li class="item-menu-inside"><a>Estudiantes regulares</a></li>
                 <li class="item-menu-inside"><a>CINU</a></li>
@@ -119,7 +119,7 @@
 <div class="card is-hidden-mobile">
   <div class="card-content">
     <div class="content">
-      <a class="twitter-timeline" data-lang="es" data-width="400" data-height="400" href="https://twitter.com/DSUnefaLara?ref_src=twsrc%5Etfw">Tweets by DSUnefaLara</a> 
+      <a class="twitter-timeline" data-lang="es" data-width="400" data-height="400" href="https://twitter.com/DSUnefaLara?ref_src=twsrc%5Etfw">Tweets by DSUnefaLara</a>
     </div>
   </div>
 </div>
@@ -137,22 +137,22 @@
     </div>
   </div>
 </div>
-</aside> 
+</aside>
 </template>
 
 <script>
-  import { BulmaAccordion, BulmaAccordionItem } from 'vue-bulma-accordion'
+import { BulmaAccordion, BulmaAccordionItem } from 'vue-bulma-accordion'
 
-  export default {
-    name: 'SidebarHome',
-    data() {
-      return {}
-    },
-    components: {
-      BulmaAccordion,
-      BulmaAccordionItem
-    }
+export default {
+  name: 'SidebarHome',
+  data() {
+    return {}
+  },
+  components: {
+    BulmaAccordion,
+    BulmaAccordionItem
   }
+}
 
 </script>
 

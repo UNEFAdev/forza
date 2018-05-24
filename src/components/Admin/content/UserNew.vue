@@ -61,6 +61,7 @@
                   <option value="Economia">Economia Social</option>
                   <option value="Servicio-Comunitario">Servicio Comunitario</option>
                   <option value="Pasantias">Pasantias</option>
+                  <option value="Todo">General</option>
                 </select>
               </div>
             </div>
@@ -91,26 +92,26 @@
 </template>
 
 <script>
-  import firebase from 'firebase'
-  export default {
-    name: 'user-new',
-    data() {
-      return {
-        // this array contains all the required fields to add a new user
-        username: '',
-        firstname: '',
-        lastname: '',
-        password: '',
-        email: '',
-        role: '',
-        category: ''
-      }
-    },
-    methods: {
-      RegisterUser () {
-      // check if all fields are filled
+import firebase from 'firebase'
+export default {
+  name: 'user-new',
+  data () {
+    return {
+      // this array contains all the required fields to add a new user
+      username: '',
+      firstname: '',
+      lastname: '',
+      password: '',
+      email: '',
+      role: '',
+      category: ''
+    }
+  },
+  methods: {
+    RegisterUser () {
+    // check if all fields are filled
       if (this.email && this.username && this.password && this.category && this.role && this.firstname && this.lastname) {
-        // create a new user with the provided email and password
+      // create a new user with the provided email and password
         firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
           .then((user) => {
             // if user created successfully add it to the db and display a success message
@@ -119,23 +120,23 @@
           })
           // if creating user fails display an error message
           .catch(err => Object.assign({}, err))
-        } else {
-          alert('Campos vacios, rellene todos los campos')
-        }
-      },
-      addUser (userUID) {
-        // add the new user credentiels to the database using the same ID
-        firebase.database().ref('users/' + userUID).set({
-          username: this.username,
-          email: this.email,
-          firstname: this.firstname,
-          lastname: this.lastname,
-          category: this.category,
-          role: 'guest'
-        })
+      } else {
+        alert('Campos vacios, rellene todos los campos')
       }
+    },
+    addUser (userUID) {
+      // add the new user credentiels to the database using the same ID
+      firebase.database().ref('users/' + userUID).set({
+        username: this.username,
+        email: this.email,
+        firstname: this.firstname,
+        lastname: this.lastname,
+        category: this.category,
+        role: this.role
+      })
     }
   }
+}
 
 </script>
 

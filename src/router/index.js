@@ -42,6 +42,18 @@ export default new Router({
           path: 'sistemas/regulares',
           component: PostMain
         },
+        {
+          path: 'sistemas/cinu',
+          component: PostMain
+        },
+        {
+          path: 'sistemas/egresados',
+          component: PostMain
+        },
+        {
+          path: 'sistemas/docentes',
+          component: PostMain
+        }
       ]
     },
     {

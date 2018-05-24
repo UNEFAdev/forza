@@ -98,6 +98,9 @@ export default {
       this.$firebaseRefs.users.child(user['.key']).set({
         username: user.username,
         email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        category: user.category,
         role: 'admin'
       })
     },
@@ -105,6 +108,9 @@ export default {
     ban (user) {
       this.$firebaseRefs.users.child(user['.key']).set({
         username: user.username,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        category: user.category,
         email: user.email,
         role: 'guest'
       })
