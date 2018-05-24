@@ -88,7 +88,7 @@ export default {
   font-size: 0.8em;
 }
 html, #app{
-  background-color: #363c61;
+  background-color: #363c61 !important;
 background-image: url("https://www.transparenttextures.com/patterns/concrete-wall-3.png");
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
