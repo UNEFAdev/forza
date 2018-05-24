@@ -98,6 +98,7 @@ import editorOptions from './editor-options'
 import imageLoader from '../../../mixins/image-loader'
 import notifier from '../../../mixins/notifier'
 
+
 export default {
   name: 'post-new',
   data () {
@@ -112,15 +113,16 @@ export default {
       tags: '',
       featuredImage: '',
       editorOptions,
-      user: []
+      user: [],
+      errors: []
     }
   },
   props: ['add-post'],
   mixins: [imageLoader, notifier],
   methods: {
     add () {
-      console.log(this.featuredImage)
-      if (this.title) {
+
+      if (this.title && this.body && this.category && this.subcategory) {
         this.addPost({
           title: this.title,
           body: this.body,
@@ -132,8 +134,9 @@ export default {
           created: Date.now()
         })
         this.$router.push({ path: '/admin/posts' })
+
       } else {
-        this.showNotification('warning', 'The title field can not be empty')
+        this.showNotification('warning', 'Campos Vacios, llene todos los campos')
       }
     },
     uploadFeaturedImage (e) {

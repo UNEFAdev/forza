@@ -69,6 +69,7 @@ import moment from 'moment'
 import { postsRef } from '../../../config'
 import notifier from '../../../mixins/notifier'
 import modal from '@/components/shared/Modal'
+import axios from 'axios'
 export default {
   name: 'posts',
   data () {
@@ -76,7 +77,8 @@ export default {
       showModal: false,
       header: '',
       kind: '',
-      post: ''
+      post: '',
+      errors: []
     }
   },
   firebase: {
@@ -85,20 +87,43 @@ export default {
   mixins: [notifier],
   methods: {
     addPost (post) {
-      this.$firebaseRefs.posts.push(post).then(() => {
-        this.showNotification('success', 'Post added successfully')
+      this.$firebaseRefs.posts.push(post).then((snap) => {
+        axios.post('https://discomycetous-male.000webhostapp.com/process.php', {
+          'type': 'POST',
+          'channels': ['-1001242019501'],
+          'title': post.title,
+          'message': this.cutString(post.body),
+          'post_url': 'http://forza.cf/post/view/' + snap.key,
+          'button': {
+            'text': 'Detalles acá',
+            'url': 'http://forza.cf/post/view/' + snap.key
+          },
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(response => {
+          // JSON responses are automatically parsed.
+          console.log(response.data)
+        }).catch(e => {
+          this.errors.push(e)
+        })
+        this.showNotification('success', 'Entrada publicada correctamente')
       })
+    },
+    cutString (string) {
+      let temp = string.replace(/<(?:.|\n)*?>/gm, '')
+      return temp.substring(0, 100) + '...'
     },
     deletePost (post) {
       // delete post form firebase
-      this.header = 'Are you sure you want to delete this post?'
+      this.header = '¿Seguro quieres eliminar esta entrada?'
       this.kind = 'deletePost'
       this.showModal = true
       this.post = post
     },
     confirmDeletePost () {
       this.$firebaseRefs.posts.child(this.post['.key']).remove().then(() => {
-        this.showNotification('success', 'Post deleted successfully')
+        this.showNotification('success', 'Entrada eliminada correctamente')
         this.showModal = false
         this.post = ''
       })
@@ -110,7 +135,7 @@ export default {
       // remove the .key attribute
       delete tempPost['.key']
       this.$firebaseRefs.posts.child(post['.key']).set(tempPost).then(() => {
-        this.showNotification('success', 'Post updated successfully')
+        this.showNotification('success', 'Entrada actualizada correctamente')
       })
     },
     postDate (epoch) {
