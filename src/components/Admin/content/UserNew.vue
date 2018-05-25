@@ -73,13 +73,13 @@
       <div class="field column is-one-third">
         <label class="label">Rol del nuevo usuario:</label>
         <label class="is-block">
-          <input type="radio" v-model="role" id="admin" value="admin"> Administrador
+          <input type="radio" v-model="role" id="administrador" value="administrador"> Administrador
         </label>
         <label class="is-block">
-          <input type="radio" v-model="role" id="editor" value="editor"> Editor
+          <input type="radio" v-model="role" id="coordinador" value="coordinador"> Coordinador
         </label>
         <label class="is-block">
-          <input type="radio" v-model="role" id="user" value="user"> Usuario
+          <input type="radio" v-model="role" id="invitado" value="invitado"> Invitado
         </label>
       </div>
 
@@ -134,6 +134,7 @@ export default {
         category: this.category,
         role: this.role
       })
+      this.showNotification('success', 'Usuario creado correctamente')
     }
   }
 }

@@ -74,9 +74,6 @@ export default {
   },
   components: {
     modal
-  },
-  mounted: function () {
-    
   }
 }
 

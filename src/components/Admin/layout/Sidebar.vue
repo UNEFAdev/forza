@@ -2,6 +2,16 @@
   <aside class="menu sidebar" id="sidebar">
 
     <ul class="menu-list">
+      <li>
+        <router-link v-if="isAdmin()" :to="'/admin/users'">
+          <span class="icon is-medium has-text-centered">
+            <i class="fa fa-user"></i>
+          </span>
+          <p class="has-text-centered">
+            Usuarios
+          </p>
+        </router-link>
+      </li>
       <li v-for="(item, index) in menu" :key="index">
         <router-link :to="item.path" v-if="item.path">
           <span class="icon is-medium has-text-centered">
@@ -18,17 +28,14 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+import { usersRef } from '../../../config'
 export default {
   name: 'sidebar',
   data () {
     return {
       // this array contains the all the links in the sidebar
       menu: [
-        {
-          name: 'Usuarios',
-          path: '/admin/users',
-          icon: 'fa-user'
-        },
         {
           name: 'Entradas',
           path: '/admin/posts',
@@ -49,8 +56,25 @@ export default {
           path: '/admin/settings',
           icon: 'fa-gear'
         }
-      ]
+      ],
+      user: [],
+      currentUser: firebase.auth().currentUser,
     }
+  },
+  firebase: {
+    users: usersRef
+  },
+  methods: {
+    isAdmin () {
+      return this.user.role === 'administrador'
+    }
+  },
+  mounted: function () {
+    this.$firebaseRefs.users.orderByKey().equalTo(this.currentUser.uid).limitToFirst(1).once('value').then(function (snapshot) {
+      let values = snapshot.val()
+      let key = Object.keys(values)
+      this.user = values[key[0]]
+    }.bind(this))
   }
 }
 
