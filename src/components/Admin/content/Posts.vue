@@ -130,7 +130,8 @@ export default {
     },
     cutString (string) {
       let temp = string.replace(/<(?:.|\n)*?>/gm, '')
-      return temp.substring(0, 20) + '...'
+      let text = temp.replace(/&nbsp;/gi,'');
+      return text.substring(0, 370) + '...'
     },
     deletePost (post) {
       // delete post form firebase
