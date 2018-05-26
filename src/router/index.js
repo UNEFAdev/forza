@@ -35,7 +35,7 @@ export default new Router({
           component: PostMain
         },
         {
-          path: 'post/view/:key',
+          path: '/post/view/:key',
           component: PostView
         },
         {

@@ -17,7 +17,7 @@
           ".validate": "newData.isString()"
         },
         "created": {
-          ".validate": "newData.val() < now"
+          //".validate": "newData.val() < now"
         },
         "category": {
           ".validate": "newData.isString()"
@@ -62,7 +62,7 @@
           ".validate": "newData.isString()"
         },
         "created": {
-          ".validate": "newData.val() < now"
+          //".validate": "newData.val() < now"
         }
       }
     },

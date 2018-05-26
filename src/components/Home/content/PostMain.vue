@@ -17,19 +17,22 @@
             <div class="column is-one-fifth">
               <p class="buttons is-centered">
                 <i class="fa fa-share" aria-hidden="true"></i>&nbsp;&nbsp;
-                <a class="button is-small is-link is-outlined" style="border: none;">
+                <a class="button is-small is-link is-outlined" 
+                    style="border: none;"
+                    @click="shareTelegram(post['.key'], post.title)">
                   <span class="icon fa-lg">
                     <i class="fa fa-telegram fa-lg" aria-hidden="true"></i>
                   </span>
                 </a>
-                <a class="button is-small is-success is-outlined" style="border: none;">
+                <a class="button is-small is-success is-outlined" style="border: none;"
+                @click="shareWhatsapp(post['.key'])">
                   <span class="icon fa-lg">
                     <i class="fa fa-whatsapp fa-lg" aria-hidden="true"></i>
                   </span>
                 </a>
                 <a class="button is-small is-link is-outlined" style="border: none;" href="javascript: void(0);"
                    data-layout="button"
-                   onclick="window.open('https://www.facebook.com/sharer.php?u=https://forza.cf/post/view/-L9XPZjtIRXcHfjvRLvD&title=title&description=MyDescription');">
+                   @click="shareFacebook(post['.key'], post.title, cutString(post.body))">
                   <span class="icon fa-lg">
                     <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
                   </span>
@@ -54,7 +57,7 @@
             </div>
             <div class="column is-one-quarter">
               <div class="buttons has-addons is-right" style="margin-right: 5%;">
-                <router-link :to="'post/view/' + post['.key']" class=" button is-link" :class="colorPost (post.category)"><span class="icon"><i
+                <router-link :to="'/post/view/' + post['.key']" class=" button is-link" :class="colorPost (post.category)"><span class="icon"><i
                   class="fa fa-plus" aria-hidden="true"></i></i></span>&nbsp; Ver mas
                 </router-link>
               </div>
@@ -99,6 +102,19 @@ export default {
     posts: postsRef
   },
   methods: {
+    shareFacebook (key, title, description) {
+      let forza = 'https://forza.cf'
+      window.open('https://www.facebook.com/sharer.php?u=' + forza + '/post/view/' + key + '&title=' + title + '&description=' + description + '')
+    },
+    shareTelegram (key, title) {
+      let forza = 'https://forza.cf'
+      window.open('https://telegram.me/share/url?url=' + forza + '/post/view/' + key + '&text=' + title + '')
+    },
+    shareWhatsapp (key) {
+      let forza = 'https://forza.cf'
+      window.open('whatsapp://send?text=' + forza + '/post/view/' + key)
+    },
+    
     colorPost (text) {
       switch (text) {
         case 'Sistemas':

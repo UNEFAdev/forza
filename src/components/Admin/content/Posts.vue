@@ -35,13 +35,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(post, index) in posts" :key="index">
+          <tr v-for="(post, index) in postByUserCategory" :key="index">
             <td class="post-title-cell">
-              <router-link :to="'/admin/posts/edit/' + post['.key']">
+              <router-link v-if="ownPost(post) || isAdmin()" :to="'/admin/posts/edit/' + post['.key']">
                 {{post.title}}
               </router-link>
-
-              <div class="actions">
+              <div v-else>
+                {{post.title}}
+              </div>
+              <div v-if="ownPost(post) || isAdmin()" class="actions">
                 <router-link :to="'/admin/posts/edit/' + post['.key']">
                   <span class="has-text-info">Editar</span>
                 </router-link>
@@ -65,8 +67,9 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 import moment from 'moment'
-import { postsRef } from '../../../config'
+import { postsRef, usersRef } from '../../../config'
 import notifier from '../../../mixins/notifier'
 import modal from '@/components/shared/Modal'
 import axios from 'axios'
@@ -74,45 +77,60 @@ export default {
   name: 'posts',
   data () {
     return {
+      currentUser: firebase.auth().currentUser,
       showModal: false,
       header: '',
       kind: '',
       post: '',
-      errors: []
+      errors: [],
+      key: '',
+      entries: [],
+      user: [],
+      data: []
     }
   },
   firebase: {
-    posts: postsRef
+    posts: postsRef,
+    users: usersRef
   },
   mixins: [notifier],
   methods: {
+    ownPost (post) {
+      let author = this.user.firstname + ' ' + this.user.lastname
+      return post.author === author
+    },
+    isAdmin (post) {
+      return this.user.role === 'administrador'
+    },
     addPost (post) {
-      this.$firebaseRefs.posts.push(post).then((snap) => {
-        axios.post('https://discomycetous-male.000webhostapp.com/process.php', {
+      this.$firebaseRefs.posts.push(post).then(function (snap) {
+        this.key = snap.key
+        this.showNotification('success', 'Entrada publicada correctamente')
+        this.data = {
           'type': 'POST',
-          'channels': ['-1001242019501'],
+          'category': post.category,
           'title': post.title,
           'message': this.cutString(post.body),
-          'post_url': 'http://forza.cf/post/view/' + snap.key,
+          'post_url': 'http://forza.cf/post/view/' + this.key,
           'button': {
             'text': 'Detalles acá',
-            'url': 'http://forza.cf/post/view/' + snap.key
-          },
-          headers: {
-            'Content-Type': 'application/json'
+            'url': 'http://forza.cf/post/view/' + this.key
           }
-        }).then(response => {
+        }
+        console.log(this.data)
+        axios.post(
+          'https://discomycetous-male.000webhostapp.com/process.php',
+          JSON.stringify(this.data)).then(response => {
           // JSON responses are automatically parsed.
           console.log(response.data)
         }).catch(e => {
-          this.errors.push(e)
+          console.log(e)
         })
-        this.showNotification('success', 'Entrada publicada correctamente')
-      })
+      }.bind(this))
     },
     cutString (string) {
       let temp = string.replace(/<(?:.|\n)*?>/gm, '')
-      return temp.substring(0, 100) + '...'
+      return temp.substring(0, 20) + '...'
     },
     deletePost (post) {
       // delete post form firebase
@@ -148,6 +166,25 @@ export default {
   },
   components: {
     modal
+  },
+  computed: {
+    postByUserCategory: function () {
+      let posts = this.posts
+      return posts.filter((post) => {
+        if (this.user.category === 'Todo') {
+          return posts
+        } else {
+          return post.category === this.user.category
+        }
+      }).slice().reverse()
+    }
+  },
+  mounted: function () {
+    this.$firebaseRefs.users.orderByKey().equalTo(this.currentUser.uid).limitToFirst(1).once('value').then(function (snapshot) {
+      let values = snapshot.val()
+      let key = Object.keys(values)
+      this.user = values[key[0]]
+    }.bind(this))
   }
 }
 

@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="field">
-          <label class="label">Escoga la carrera de la publicación</label>
+          <label class="label">Escoja la carrera de la publicación</label>
           <div class="control">
             <div class="select is-info ">
               <select v-model="category">
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="field">
-          <label class="label">Escoga el conglomerado de publicación</label>
+          <label class="label">Escoja el segmento de publicación</label>
           <div class="control">
             <div class="select is-info ">
               <select v-model="subcategory">
@@ -98,7 +98,6 @@ import editorOptions from './editor-options'
 import imageLoader from '../../../mixins/image-loader'
 import notifier from '../../../mixins/notifier'
 
-
 export default {
   name: 'post-new',
   data () {
@@ -121,7 +120,6 @@ export default {
   mixins: [imageLoader, notifier],
   methods: {
     add () {
-
       if (this.title && this.body && this.category && this.subcategory) {
         this.addPost({
           title: this.title,
@@ -134,7 +132,6 @@ export default {
           created: Date.now()
         })
         this.$router.push({ path: '/admin/posts' })
-
       } else {
         this.showNotification('warning', 'Campos Vacios, llene todos los campos')
       }
