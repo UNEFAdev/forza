@@ -1,6 +1,6 @@
 <template>
-  <div class="columns">
-    <div class="column">
+
+    <div class="">
       <div v-for="(post, index) in pages[pageNumber]" :key="index" class="card card-right ">
         <header class="card-header">
           <p class="card-header-title" :class="colorPost (post.category)">
@@ -75,7 +75,7 @@
         </button>
       </nav>
     </div>
-  </div>
+
 </template>
 
 <script>

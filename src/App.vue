@@ -22,7 +22,8 @@ body,
   width: 100%
   margin: 0px
   padding: 0px
-
+.button.is-info
+  background-color: #3273dc;
 .bulma
   @import "../node_modules/bulma/bulma"
   *
