@@ -41,23 +41,6 @@ export default {
           path: '/admin/posts',
           icon: 'fa-file-text'
         }
-        /*
-        {
-          name: 'Paginas',
-          path: '/admin/pages',
-          icon: 'fa-archive'
-        },
-        {
-          name: 'Media',
-          path: '/admin/media',
-          icon: 'fa-picture-o'
-        },
-        {
-          name: 'Opciones',
-          path: '/admin/settings',
-          icon: 'fa-gear'
-        }
-        */
       ],
       user: [],
       currentUser: firebase.auth().currentUser,
