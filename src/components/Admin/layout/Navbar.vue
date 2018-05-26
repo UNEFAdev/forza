@@ -80,8 +80,8 @@ export default {
 </script>
 
 <style lang="scss">
-$navbarBg: #333;
-$navbarColor: #aaaaaa;
+$navbarBg: #3273dc;
+$navbarColor: #fff;
 
 #navbar {
   position: fixed;

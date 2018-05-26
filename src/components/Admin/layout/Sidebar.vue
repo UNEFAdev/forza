@@ -67,7 +67,7 @@ export default {
 
 <style lang="scss">
 $sidebarBg: #384A5C;
-$sidebarColor: #B7B7B7;
+$sidebarColor: #fff;
 
 #sidebar {
   position: fixed;

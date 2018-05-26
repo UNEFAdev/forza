@@ -5,16 +5,18 @@
     <sidebar></sidebar>
 
     <!-- The admin page content -->
-    <div class="wrapper">
-      <section class="hero is-light is-medium is-bold" v-if="$route.name === 'Admin'">
-        <div class="hero-body ">
-          <div class="container has-text-centered">
+    <div class="is-fullheight is-vertical-aligned">
+      <section class="is-light is-medium is-bold" v-if="$route.name === 'Admin'">
+        <div class="">
+          <div class="container has-text-centered" style="top:200px;">
+           <figure class="image">
+            <img src="/static/img/logo.png" alt="unefa" style="width: 15%; margin: 0 auto;">
+          </figure>
             <div class="titleAdmin">
               <h1 class="title">
                 Sistema de administración Forza
               </h1>
             </div>
-            <p>Version v1.0.0</p>
           </div>
         </div>
       </section>
