@@ -5,7 +5,8 @@
       <div class="media-content">
         <div class="content">
           <a href="/" class="has-text-weight-semibold has-text-link"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</a>
-          <p class="is-right has-text-right" style="margin: 0;padding: 0;"><span class="is-size-7">Relacionado: </span><strong class="has-text-weight-semibold has-text-link">{{post.category}}</strong></p>
+          <p class="is-right has-text-right" style="margin: 0;padding: 0;"><span class="is-size-7">Relacionado con: </span><strong class="has-text-weight-semibold has-text-link">{{post.category}}</strong></p>
+          <p class="is-right has-text-right" style="margin: 0;padding: 0;"><span class="is-size-7">Dirigido a: </span><strong class="has-text-weight-semibold has-text-link">{{post.subcategory}}</strong></p>
           <p class="is-right has-text-right"><span class="is-size-7">Autor: </span><strong class="has-text-weight-semibold has-text-link"> {{post.author}}</strong><br><strong class="is-size-7">{{postDate(post.created)}}</strong></p>
           <h4 class="has-text-centered">
             <strong class="has-text-link">{{post.title}}</strong>

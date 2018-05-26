@@ -13,6 +13,10 @@
       </div>
     </transition>
 
+    <transition mode="out-in" name="fade">
+      <modal @close="showModal = false" :kind="kind" @confirmDeleteCurrentUser='confirmDeleteCurrentUser()' v-if="showModal" :header="header"/>
+    </transition>
+
     <!-- the new user form loaded via vue loader -->
     <router-view></router-view>
 
@@ -38,7 +42,7 @@
               <div class="actions">
                 <span v-if="currentUser.uid !== user['.key']" @click="setAdmin(user)" class="approve has-text-success">Administrador</span>
                 <span v-if="currentUser.uid !== user['.key']" @click="setCoordinator(user)" class="approve has-text-primary">Coordinador</span>
-                <span v-if="currentUser.uid === user['.key']" @click="deleteCurrentUser" class=" has-text-danger">Darme de Baja</span>
+                <span v-if="currentUser.uid === user['.key']" @click="deleteUser()" class=" has-text-danger">Darme de Baja</span>
               </div>
             </td>
             <td class="firstname-cell">{{user.firstname}}</td>
@@ -73,7 +77,7 @@
             <div class="actions">
               <span v-if="currentUser.uid !== user['.key']" @click="setAdmin(user)" class="approve has-text-success">Administrador</span>
               <span v-if="currentUser.uid !== user['.key']" @click="setGuest(user)" class="approve has-text-danger">Invitado</span>
-              <span v-if="currentUser.uid === user['.key']" @click="deleteCurrentUser" class=" has-text-danger">Darme de Baja</span>
+              <span v-if="currentUser.uid === user['.key']" @click="deleteUser()" class=" has-text-danger">Darme de Baja</span>
             </div>
           </td>
           <td class="firstname-cell">{{user.firstname}}</td>
@@ -110,7 +114,7 @@
                 <!-- v-if="currentUser.uid === user['.key']" -->
                 <span v-if="currentUser.uid !== user['.key']" @click="setCoordinator(user)" class="ban has-text-primary">Coordinador</span>
                 <span v-if="currentUser.uid !== user['.key']" @click="setGuest(user)" class="ban has-text-danger">Invitado</span>
-                <span v-if="currentUser.uid === user['.key']" @click="deleteCurrentUser" class=" has-text-danger">Darme de Baja</span>
+                <span v-if="currentUser.uid === user['.key']" @click="deleteUser()" class=" has-text-danger">Darme de Baja</span>
               </div>
             </td>
             <td class="firstname-cell">{{user.firstname}}</td>
@@ -129,7 +133,7 @@
 
 <script>
 import notifier from '../../../mixins/notifier'
-
+import modal from '@/components/shared/Modal'
 import firebase from 'firebase'
 import { usersRef } from '../../../config'
 
@@ -137,6 +141,9 @@ export default {
   name: 'users',
   data () {
     return {
+      kind: '',
+      showModal: false,
+      header: '',
       currentUser: firebase.auth().currentUser
     }
   },
@@ -183,15 +190,22 @@ export default {
       })
       this.showNotification('success', 'Usuario degradado a invitado')
     },
+    deleteUser () {
+      // delete user form firebase
+      this.header = '¿Seguro quieres darte de baja del sistema?'
+      this.kind = 'deleteUser'
+      this.showModal = true
+      
+    },
     // delete the current user
-    deleteCurrentUser () {
+    confirmDeleteCurrentUser () {
       let vm = this
       // delete the current user from the firebase auth
       this.currentUser.delete()
         .then(function () {
           // delete the current user from the real time database
           vm.$firebaseRefs.users.child(vm.currentUser.uid).remove()
-          console.log('user deleted successfuly')
+          console.log('Usuario dado de baja correctamente')
         })
         .catch(function (error) {
           console.log(error.message)
@@ -214,6 +228,9 @@ export default {
         return user.role === 'invitado'
       })
     }
+  },
+  components: {
+    modal
   }
 }
 

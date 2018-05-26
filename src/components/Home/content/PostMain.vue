@@ -48,10 +48,10 @@
                   Publicado por: <strong class="has-text-weight-semibold has-text-link">{{post.author}}</strong>
                 </li>
                 <li class=" is-size-7">
-                  Relacionado: <strong class="has-text-weight-semibold has-text-link">{{post.category}}</strong>
+                  Relacionado con: <strong class="has-text-weight-semibold has-text-link">{{post.category}}</strong>
                 </li>
                 <li class=" is-size-7">
-                  Conglomerado: <strong class="has-text-weight-semibold has-text-link">{{subcategoryParse(post.subcategory)}}</strong>
+                  Dirigido a: <strong class="has-text-weight-semibold has-text-link">{{subcategoryParse(post.subcategory)}}</strong>
                 </li>
               </ul>
             </div>
@@ -185,7 +185,8 @@ export default {
     },
     cutString (string) {
       let temp = string.replace(/<(?:.|\n)*?>/gm, '')
-      return temp.substring(0, 370) + '...'
+      let text = temp.replace(/&nbsp;/gi,'');
+      return text.substring(0, 370) + '...'
     },
     nextPage () {
       this.pageNumber++

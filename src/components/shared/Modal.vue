@@ -16,7 +16,7 @@
       <button class="button" @click="$emit('close')">Cancelar</button>
     </footer>
     <footer class="modal-card-foot" v-else>
-      <template v-if="kind == 'deletePage' || kind == 'deleteField' || kind == 'deleteSetting' || kind == 'deletePost'">
+      <template v-if="kind == 'deletePage' || kind == 'deleteField' || kind == 'deleteSetting' || kind == 'deletePost' || kind == 'deleteUser' ">
         <button class="button is-success" @click="deleteObj()">Confirmar</button>
       </template>
       <template v-else>
@@ -49,6 +49,7 @@ export default {
       if (this.kind === 'deletePage') { this.$emit('confirmDeletePage') }
       if (this.kind === 'deleteSetting') { this.$emit('confirmDeleteSetting') }
       if (this.kind === 'deletePost') { this.$emit('confirmDeletePost') }
+      if (this.kind === 'deleteUser') { this.$emit('confirmDeleteCurrentUser') }
     }
   },
   props: {
