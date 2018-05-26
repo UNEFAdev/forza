@@ -40,7 +40,8 @@ export default {
           name: 'Entradas',
           path: '/admin/posts',
           icon: 'fa-file-text'
-        },
+        }
+        /*
         {
           name: 'Paginas',
           path: '/admin/pages',
@@ -56,6 +57,7 @@ export default {
           path: '/admin/settings',
           icon: 'fa-gear'
         }
+        */
       ],
       user: [],
       currentUser: firebase.auth().currentUser,

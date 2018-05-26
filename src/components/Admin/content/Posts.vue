@@ -108,7 +108,7 @@ export default {
         this.showNotification('success', 'Entrada publicada correctamente')
         this.data = {
           'type': 'POST',
-          'channels': ['-1001242019501'],
+          'category': post.category,
           'title': post.title,
           'message': this.cutString(post.body),
           'post_url': 'http://forza.cf/post/view/' + this.key,
@@ -117,17 +117,10 @@ export default {
             'url': 'http://forza.cf/post/view/' + this.key
           }
         }
-        console.log(JSON.stringify(this.data))
         console.log(this.data)
         axios.post(
           'https://discomycetous-male.000webhostapp.com/process.php',
-          JSON.stringify(this.data),
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*'
-            }
-          }).then(response => {
+          JSON.stringify(this.data)).then(response => {
           // JSON responses are automatically parsed.
           console.log(response.data)
         }).catch(e => {

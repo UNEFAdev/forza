@@ -36,8 +36,8 @@
             <td class="username-cell">
               {{user.username}}
               <div class="actions">
-                <span @click="setAdmin(user)" class="approve has-text-success">Administrador</span>
-                <span @click="setCoordinator(user)" class="approve has-text-primary">Coordinador</span>
+                <span v-if="currentUser.uid !== user['.key']" @click="setAdmin(user)" class="approve has-text-success">Administrador</span>
+                <span v-if="currentUser.uid !== user['.key']" @click="setCoordinator(user)" class="approve has-text-primary">Coordinador</span>
                 <span v-if="currentUser.uid === user['.key']" @click="deleteCurrentUser" class=" has-text-danger">Darme de Baja</span>
               </div>
             </td>
@@ -71,8 +71,8 @@
           <td class="username-cell">
             {{user.username}}
             <div class="actions">
-              <span @click="setAdmin(user)" class="approve has-text-success">Administrador</span>
-              <span @click="setGuest(user)" class="approve has-text-danger">Invitado</span>
+              <span v-if="currentUser.uid !== user['.key']" @click="setAdmin(user)" class="approve has-text-success">Administrador</span>
+              <span v-if="currentUser.uid !== user['.key']" @click="setGuest(user)" class="approve has-text-danger">Invitado</span>
               <span v-if="currentUser.uid === user['.key']" @click="deleteCurrentUser" class=" has-text-danger">Darme de Baja</span>
             </div>
           </td>
@@ -108,8 +108,8 @@
               <div class="actions">
                 <!-- display a delete button below the current logged in user -->
                 <!-- v-if="currentUser.uid === user['.key']" -->
-                <span @click="setCoordinator(user)" class="ban has-text-primary">Coordinador</span>
-                <span @click="setGuest(user)" class="ban has-text-danger">Invitado</span>
+                <span v-if="currentUser.uid !== user['.key']" @click="setCoordinator(user)" class="ban has-text-primary">Coordinador</span>
+                <span v-if="currentUser.uid !== user['.key']" @click="setGuest(user)" class="ban has-text-danger">Invitado</span>
                 <span v-if="currentUser.uid === user['.key']" @click="deleteCurrentUser" class=" has-text-danger">Darme de Baja</span>
               </div>
             </td>
@@ -184,7 +184,7 @@ export default {
       this.showNotification('success', 'Usuario degradado a invitado')
     },
     // delete the current user
-    deleteCurrentUse () {
+    deleteCurrentUser () {
       let vm = this
       // delete the current user from the firebase auth
       this.currentUser.delete()
