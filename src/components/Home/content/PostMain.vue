@@ -1,6 +1,20 @@
 <template>
-
+ 
+  
     <div class="">
+      
+      
+      <div v-if="loading" class="columns is-mobile is-centered">
+        <div class="column is-narrow spinner" >
+          <div class="spinner">
+            <circle3></circle3>
+          </div>
+          
+        </div>
+      </div>
+      
+      <div v-else class="all">
+      
       <div v-for="(post, index) in pages[pageNumber]" :key="index" class="card card-right ">
         <header class="card-header">
           <p class="card-header-title" :class="colorPost (post.category)">
@@ -45,19 +59,19 @@
                   <time datetime="2018-1-1"><strong>{{postDate(post.created)}}</strong></time>
                 </li>
                 <li class=" is-size-7">
-                  Publicado por: <strong class="has-text-weight-semibold has-text-link">{{post.author}}</strong>
+                  Publicado por: <strong class="has-text-weight-semibold" :class="colorPostLink (post.category)">{{post.author}}</strong>
                 </li>
                 <li class=" is-size-7">
-                  Relacionado con: <strong class="has-text-weight-semibold has-text-link">{{post.category}}</strong>
+                  Relacionado con: <strong class="has-text-weight-semibold" :class="colorPostLink (post.category)">{{post.category}}</strong>
                 </li>
                 <li class=" is-size-7">
-                  Dirigido a: <strong class="has-text-weight-semibold has-text-link">{{subcategoryParse(post.subcategory)}}</strong>
+                  Dirigido a: <strong class="has-text-weight-semibold" :class="colorPostLink (post.category)" >{{subcategoryParse(post.subcategory)}}</strong>
                 </li>
               </ul>
             </div>
             <div class="column is-one-quarter">
               <div class="buttons has-addons is-right" style="margin-right: 5%;">
-                <router-link :to="'/post/view/' + post['.key']" class=" button is-link" :class="colorPost (post.category)"><span class="icon"><i
+                <router-link :to=" { name: 'PostView', params: { page: pageNumber, key: post['.key'] } }" class=" button see-more" :class="colorPost (post.category)"><span class="icon"><i
                   class="fa fa-plus" aria-hidden="true"></i></i></span>&nbsp; Ver mas
                 </router-link>
               </div>
@@ -75,14 +89,15 @@
         </button>
       </nav>
     </div>
-
+  </div>
 </template>
 
 <script>
 import moment from 'moment'
 import {postsRef} from '../../../config'
 import editorReadMode from './editor-read'
-
+import sharer from '../../../mixins/sharers'
+import { Circle3 } from 'vue-loading-spinner'
 export default {
   name: 'PostMain',
   data () {
@@ -95,25 +110,17 @@ export default {
       promises: [],
       size: 7,
       extraRecord: [],
-      newPages: []
+      newPages: [],
+      loading: 'true'
     }
+  },
+  components: {
+    Circle3
   },
   firebase: {
     posts: postsRef
   },
   methods: {
-    shareFacebook (key, title, description) {
-      let forza = 'https://forza.cf'
-      window.open('https://www.facebook.com/sharer.php?u=' + forza + '/post/view/' + key + '&title=' + title + '&description=' + description + '')
-    },
-    shareTelegram (key, title) {
-      let forza = 'https://forza.cf'
-      window.open('https://telegram.me/share/url?url=' + forza + '/post/view/' + key + '&text=' + title + '')
-    },
-    shareWhatsapp (key) {
-      let forza = 'https://forza.cf'
-      window.open('whatsapp://send?text=' + forza + '/post/view/' + key)
-    },
     
     colorPost (text) {
       switch (text) {
@@ -135,6 +142,29 @@ export default {
           return 'agronomia'
         case 'Todo':
           return 'general'
+        default:
+      }
+    },
+    colorPostLink (text) {
+      switch (text) {
+        case 'Sistemas':
+          return 'sistemas-link'
+        case 'Electrica':
+          return 'electrica-link'
+        case 'Servicio-Comunitario':
+          return 'servicio-link'
+        case 'Pasantias':
+          return 'pasantia-link'
+        case 'Economia':
+          return 'economia-link'
+        case 'Administracion':
+          return 'administracion-link'
+        case 'Enfermeria':
+          return 'enfermeria-link'
+        case 'Agronomia':
+          return 'agronomia-link'
+        case 'Todo':
+          return 'general-link'
         default:
       }
     },
@@ -190,9 +220,11 @@ export default {
     },
     nextPage () {
       this.pageNumber++
+    
     },
     prevPage () {
       this.pageNumber--
+      
     },
     cursorPag (acumulador, cursor) {
       this.pages = acumulador || []
@@ -251,6 +283,7 @@ export default {
           return this.cursorPag(this.pages, this.extraRecord['.key'])
         } else {
           this.pages.push(page)
+          this.loading = false
           return Promise.resolve(this.pages)
         }
       }.bind(this))
@@ -258,19 +291,16 @@ export default {
 
   },
   computed: {
-    pageCount () {
-      let l = this.pages[this.pageNumber]
-      let s = this.size
-      return Math.floor(l / s)
-    },
-    paginatedData () {
-      const start = this.pageNumber * this.size
-      const end = start + this.size
-      return this.listData.slice(start, end)
-    }
+    
   },
+  mixins: [sharer],
   mounted: function () {
     this.cursorPag()
+    if(!this.$route.params.page){
+      this.pageNumber = 0
+    }else{
+      this.pageNumber = this.$route.params.page
+    }
   }
 }
 </script>
@@ -278,31 +308,67 @@ export default {
 <style scoped>
 
   .enfermeria {
-    background-color: rgba(0, 166, 28, 0.81);
+    background-color: #bab138;
   }
   .sistemas {
     background-color: #3273dc;
   }
   .general {
-    background-color: rgba(0, 135, 165, 0.81);
+    background-color: #ba6138;
   }
   .electrica {
-    background-color: rgba(165, 0, 38, 0.81);
+    background-color: #3aba41;
   }
   .economia {
-    background-color: rgba(165, 91, 0, 0.81);
+    background-color: #ba3b4e;
   }
   .administracion {
-    background-color: rgba(101, 0, 164, 0.81);
+    background-color: #ba3b4e;
   }
   .servicio {
-    background-color: rgba(175, 59, 57, 0.8);
+    background-color: #3895ba;
   }
   .pasantia {
-    background-color: rgba(0, 175, 145, 0.8);
+    background-color: #38baaa;
   }
   .agronomia {
-    background-color: rgba(134, 185, 0, 0.81);
+    background-color: #ba3883;
   }
-
+  .enfermeria-link {
+    color: #bab138;
+  }
+  .sistemas-link {
+    color: #3273dc;
+  }
+  .general-link {
+    color: #ba6138;
+  }
+  .electrica-link {
+    color: #3aba41;
+  }
+  .economia-link {
+    color: #ba3b4e;
+  }
+  .administracion-link {
+    color: #ba3b4e;
+  }
+  .servicio-link {
+    color: #3895ba;
+  }
+  .pasantia-link {
+    color: #38baaa;
+  }
+  .agronomia-link {
+    color: #ba3883;
+  }
+  .see-more{
+    color: white;
+  }
+  .see-more:hover{
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+  }
+  .spinner {
+    margin-top: 4rem;
+    height: 100vh;
+  }
 </style>
