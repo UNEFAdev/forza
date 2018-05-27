@@ -1,6 +1,16 @@
 <template>
   <div class="container posts" id="posts">
-
+    <div v-if="posts.length == 0 || loading" class="columns is-mobile is-centered">
+        <div class="column is-narrow spinner" >
+          <div class="spinner">
+            <circle3></circle3>
+          </div>
+          
+        </div>
+      </div>
+    <div v-else class="all">
+      
+    
     <!-- posts page title -->
     <div class="content-heading is-flex" style="padding: 5% 0 1%;">
       <h3 class="is-size-3">Publicaciones</h3>
@@ -23,7 +33,8 @@
       <router-view :add-post="addPost" :update-post="updatePost" :posts="posts" :key="$route.name + ($route.params.key || '')"></router-view>
 
     <!-- posts list -->
-    <div class="box">
+    
+    <div  class="box">
       <table class="table is-fullwidth is-striped">
         <thead>
           <tr>
@@ -64,6 +75,7 @@
       </table>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -72,6 +84,7 @@ import moment from 'moment'
 import { postsRef, usersRef } from '../../../config'
 import notifier from '../../../mixins/notifier'
 import modal from '@/components/shared/Modal'
+import { Circle3 } from 'vue-loading-spinner'
 import axios from 'axios'
 export default {
   name: 'posts',
@@ -86,13 +99,15 @@ export default {
       key: '',
       entries: [],
       user: [],
-      data: []
+      data: [],
+      loading: true
     }
   },
   firebase: {
     posts: postsRef,
     users: usersRef
   },
+
   mixins: [notifier],
   methods: {
     ownPost (post) {
@@ -166,7 +181,8 @@ export default {
     }
   },
   components: {
-    modal
+    modal,
+    Circle3
   },
   computed: {
     postByUserCategory: function () {
@@ -178,6 +194,7 @@ export default {
           return post.category === this.user.category
         }
       }).slice().reverse()
+
     }
   },
   mounted: function () {
@@ -185,6 +202,7 @@ export default {
       let values = snapshot.val()
       let key = Object.keys(values)
       this.user = values[key[0]]
+      this.loading = false
     }.bind(this))
   }
 }
@@ -203,4 +221,8 @@ export default {
     width: 25%;
   }
 }
+.spinner {
+    margin-top: 4rem;
+    height: 100vh;
+  }
 </style>

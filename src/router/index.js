@@ -32,10 +32,12 @@ export default new Router({
       children: [
         {
           path: '',
+          name:'Posts',
           component: PostMain
         },
         {
           path: '/post/view/:key',
+          name: 'PostView',
           component: PostView
         },
         {
