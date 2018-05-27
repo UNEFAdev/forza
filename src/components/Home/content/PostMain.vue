@@ -7,7 +7,7 @@
       <div v-if="loading" class="columns is-mobile is-centered">
         <div class="column is-narrow spinner" >
           <div class="spinner">
-            <circle3></circle3>
+            <circle3 background="#3273dc" size="60px"></circle3>
           </div>
           
         </div>
