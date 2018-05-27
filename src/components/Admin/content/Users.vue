@@ -1,6 +1,17 @@
 <template>
   <div class="container users">
 
+    <div v-if="users.length == 0" class="columns is-mobile is-centered">
+        <div class="column is-narrow spinner" >
+          <div class="spinner">
+            <circle3 background="#3273dc" size="60px"></circle3>
+          </div>
+          
+        </div>
+      </div>
+
+    <div v-else class="all">
+      
     <!-- users page title -->
     <div class="content-heading is-flex" style="padding-top: 3%;">
       <h3 class="is-size-3">Usuarios</h3>
@@ -129,9 +140,11 @@
     </div>
 
   </div>
+  </div>
 </template>
 
 <script>
+import { Circle3 } from 'vue-loading-spinner'
 import notifier from '../../../mixins/notifier'
 import modal from '@/components/shared/Modal'
 import firebase from 'firebase'
@@ -230,7 +243,8 @@ export default {
     }
   },
   components: {
-    modal
+    modal,
+    Circle3
   }
 }
 
@@ -279,4 +293,8 @@ export default {
     background-color: #C1FFD7 !important;
   }
 }
+.spinner {
+    margin-top: 4rem;
+    height: 100vh;
+  }
 </style>
