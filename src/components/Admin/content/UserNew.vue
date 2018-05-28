@@ -121,18 +121,18 @@ export default {
           // if creating user fails display an error message
           .catch(err => Object.assign({}, err))
       } else {
-        alert('Campos vacios, rellene todos los campos')
+        this.showNotification('success', 'Rellene todos los campos...')
       }
     },
     addUser (userUID) {
       // add the new user credentiels to the database using the same ID
       firebase.database().ref('users/' + userUID).set({
         username: this.username,
-        email: this.email,
+        email: this.email.toLowerCase(),
         firstname: this.firstname,
         lastname: this.lastname,
         category: this.category,
-        role: this.role
+        role: this.role.toLowerCase()
       })
       this.showNotification('success', 'Usuario creado correctamente')
     }
