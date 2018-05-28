@@ -92,6 +92,7 @@ export default {
   components: {
     Circle3
   },
+  mixins: [sharer],
   methods: {
     colorPostLink (text) {
       switch (text) {
@@ -165,8 +166,7 @@ export default {
       let temp = string.replace(/<(?:.|\n)*?>/gm, '')
       return temp.substring(0, 200) + '...'
     }
-  },
-  mixins: [sharer]
+  }
 }
 </script>
 
