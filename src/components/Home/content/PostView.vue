@@ -12,15 +12,15 @@
     <article class="media">
       <div class="media-content">
         <div class="content">
-          <router-link :to="{ name: 'Posts', params: {page: pageNumber} }" class="has-text-weight-semibold has-text-link">
+          <router-link :to="{ name: 'Posts', params: {page: pageNumber} }" class="has-text-weight-semibold" :class="colorPostLink(post.category)">
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
             Atras
           </router-link>
-          <p class="is-right has-text-right" style="margin: 0;padding: 0;"><span class="is-size-7">Relacionado con: </span><strong class="has-text-weight-semibold has-text-link">{{post.category}}</strong></p>
-          <p class="is-right has-text-right" style="margin: 0;padding: 0;"><span class="is-size-7">Dirigido a: </span><strong class="has-text-weight-semibold has-text-link">{{post.subcategory}}</strong></p>
-          <p class="is-right has-text-right"><span class="is-size-7">Autor: </span><strong class="has-text-weight-semibold has-text-link"> {{post.author}}</strong><br><strong class="is-size-7">{{postDate(post.created)}}</strong></p>
+          <p class="is-right has-text-right" style="margin: 0;padding: 0;"><span class="is-size-8 is-italic">Relacionado con: </span><strong class="has-text-weight-semibold" :class="colorPostLink(post.category)">{{post.category}}</strong></p>
+          <p class="is-right has-text-right" style="margin: 0;padding: 0;"><span class="is-size-8 is-italic">Dirigido a: </span><strong class="has-text-weight-semibold" :class="colorPostLink(post.category)">{{ subcategoryParse (post.subcategory)}}</strong></p>
+          <p class="is-right has-text-right"><span class="is-size-8 is-italic">Autor: </span><strong class="has-text-weight-semibold" :class="colorPostLink(post.category)"> {{post.author}}</strong><br><strong class="is-size-8 is-italic">{{postDate(post.created)}}</strong></p>
           <h4 class="has-text-centered">
-            <strong class="has-text-link">{{post.title}}</strong>
+            <strong :class="colorPostLink(post.category)">{{post.title}}</strong>
           </h4>
           <p><span v-html="post.body" class="has-text-justified"></span></p>
           <p class="is-pulled-right">
@@ -93,6 +93,70 @@ export default {
     Circle3
   },
   methods: {
+    colorPostLink (text) {
+      switch (text) {
+        case 'Sistemas':
+          return 'sistemas-link'
+        case 'Electrica':
+          return 'electrica-link'
+        case 'Servicio-Comunitario':
+          return 'servicio-link'
+        case 'Pasantias':
+          return 'pasantia-link'
+        case 'Economia':
+          return 'economia-link'
+        case 'Administracion':
+          return 'administracion-link'
+        case 'Enfermeria':
+          return 'enfermeria-link'
+        case 'Agronomia':
+          return 'agronomia-link'
+        case 'Todo':
+          return 'general-link'
+        default:
+      }
+    },
+    subcategoryParse (text) {
+      switch (text) {
+        case 'sist-regulares':
+          return 'Regulares'
+        case 'sist-egresados':
+          return 'Egresados'
+        case 'sist-cinu':
+          return 'CINU'
+        case 'sist-docentes':
+          return 'Docentes'
+        case 'elec-regulares':
+          return 'Regulares'
+        case 'elec-cinu':
+          return 'CINU'
+        case 'elec-docentes':
+          return 'Docentes'
+        case 'enfer-regulares':
+          return 'Regulares'
+        case 'enfer-cinu':
+          return 'CINU'
+        case 'agro-regulares':
+          return 'Regulares'
+        case 'agro-cinu':
+          return 'CINU'
+        case 'admin-regulares':
+          return 'Regulares'
+        case 'admin-cinu':
+          return 'CINU'
+        case 'econ-regulares':
+          return 'Regulares'
+        case 'econ-cinu':
+          return 'CINU'
+        case 'ser-con':
+          return 'General'
+        case 'pas':
+          return 'General'
+        case 'todo':
+          return 'General'
+        default:
+      }
+    },
       postDate (epoch) {
       if (!epoch) return // if no time return nothing
         return moment(epoch).format('MM/DD/YY - hh:mm')
@@ -107,6 +171,60 @@ export default {
 </script>
 
 <style scoped>
+.enfermeria {
+    background-color: #bab138;
+  }
+  .sistemas {
+    background-color: #3273dc;
+  }
+  .general {
+    background-color: #ba6138;
+  }
+  .electrica {
+    background-color: #3aba41;
+  }
+  .economia {
+    background-color: #ba3b4e;
+  }
+  .administracion {
+    background-color: #ba3b4e;
+  }
+  .servicio {
+    background-color: #3895ba;
+  }
+  .pasantia {
+    background-color: #38baaa;
+  }
+  .agronomia {
+    background-color: #ba3883;
+  }
+  .enfermeria-link {
+    color: #bab138;
+  }
+  .sistemas-link {
+    color: #3273dc;
+  }
+  .general-link {
+    color: #ba6138;
+  }
+  .electrica-link {
+    color: #3aba41;
+  }
+  .economia-link {
+    color: #ba3b4e;
+  }
+  .administracion-link {
+    color: #ba3b4e;
+  }
+  .servicio-link {
+    color: #3895ba;
+  }
+  .pasantia-link {
+    color: #38baaa;
+  }
+  .agronomia-link {
+    color: #ba3883;
+  }
 .spinner {
     margin-top: 4rem;
     height: 100vh;

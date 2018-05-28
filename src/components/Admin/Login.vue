@@ -38,7 +38,7 @@
 <script>
 import firebase from 'firebase'
 import notifier from '../../mixins/notifier'
-
+import { usersRef } from '../../config'
 export default {
   name: 'log-in',
   data () {
@@ -47,19 +47,52 @@ export default {
       password: ''
     }
   },
+  firebase: {
+    users: usersRef
+  },
   mixins: [notifier],
   methods: {
     login () {
       // login to firebase with email and password
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-        .then((user) => {
-          // redirect to the admin page
-          this.$router.push('/admin')
-        })
-        .catch((error) => {
-          // display an warning notification
-          this.showNotification('warning', error.message)
-        })
+      if (! this.email || ! this.password){
+        this.showNotification('warning', 'Rellene todos los campos...')
+        return
+      }
+      this.$firebaseRefs.users.orderByChild('email').equalTo(this.email).limitToFirst(1).once('value').then(function (snapshot) {
+          if( ! snapshot.val() ) {
+            this.showNotification('warning', 'Los datos no coinciden con nuestros registros...')
+            return
+          }
+            let user
+            let values = snapshot.val()
+            let key = Object.keys(values)
+            user = values[key[0]]
+            console.log(user.role)
+            if ( user.role === 'invitado' ){
+              this.showNotification('warning', 'Su cuenta aun no se ha verificado... Lo sentimos.')
+              return
+            } else {
+              firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+                .then((user) => {
+                  // redirect to the admin page
+                  
+
+                  this.$router.push('/admin')
+                })
+                .catch((error) => {
+                  // display an warning notification
+                  if(error.code === 'auth/wrong-password'){
+                    this.showNotification('warning', 'La contraseña es incorrecta...')
+                  }else{
+                    this.showNotification('warning', error.message)
+                  }
+                  
+                })
+            }
+
+          }.bind( this ) )
+
+      
     }
   }
 }
