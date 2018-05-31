@@ -18,7 +18,7 @@
       <div v-for="(post, index) in pages[pageNumber]" :key="index" class="card card-right ">
         <header class="card-header">
           <p class="card-header-title" :class="colorPost (post.category)">
-            <router-link :to=" { name: 'PostView', params: { page: pageNumber, key: post['.key'] } }">
+            <router-link class="linkpost" :to=" { name: 'PostView', params: { page: pageNumber, key: post['.key'] } }">
                 {{post.title}}
             </router-link>
           </p>          
