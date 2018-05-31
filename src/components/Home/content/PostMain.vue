@@ -1,8 +1,6 @@
 <template>
  
-  
-    <div class="">
-      
+    <div class="">     
       
       <div v-if="loading" class="columns is-mobile is-centered">
         <div class="column is-narrow spinner" >
@@ -18,8 +16,10 @@
       <div v-for="(post, index) in pages[pageNumber]" :key="index" class="card card-right ">
         <header class="card-header">
           <p class="card-header-title" :class="colorPost (post.category)">
-            {{post.title}}
-          </p>
+            <router-link class="linkpost" :to=" { name: 'PostView', params: { page: pageNumber, key: post['.key'] } }">
+                {{post.title}}
+            </router-link>
+          </p>          
         </header>
         <div class="card-content ">
           <div class="content has-text-justified ">

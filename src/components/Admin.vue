@@ -12,9 +12,13 @@
 
             <div class="titleAdmin">
               <h1 class="title">
-                Sistema de administración Forza
+                Bienvenido al Sistema de Difusión de Información Forza 
               </h1>
             </div>
+            <div class="has-text-centered">El sistema Forza es capaz de distribuir información a toda la población estudiantil de manera rápida concisa y veraz</div>
+            <div class="has-text-centered"><strong>Agradecimientos:</strong> <i> Lic. Ángel Mora, MSc. Ing Luisa Colón, Ing. Gladys Adjunta</i></div>
+            <figure><img src="static/img/logo.png" alt="" width="200" height="200"></figure>
+            <div class="has-text-centered"><strong>Desarrolladores:</strong><ul id="navlistback"> <li><a href="https://github.com/AlexR1712" target="_blank">Alexander Rodríguez</a></li> <li><a href="https://github.com/brandondrl" target="_blank">Brandon Rojas</a></li> <li><a href="https://github.com/tatuco88" target="_blank">Erickson Diaz</a></li> <li><a href="javascript:void(0);">Miguel Carvajal</a></li> <li><a href="https://github.com/ViT4RGh0ST" target="_blank">Naudy Linárez</a></li> <li><a href="javascript:void(0);">Korina Dávila</a></li></ul></div>
           </div>
         </div>
       </section>

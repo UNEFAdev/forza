@@ -15,6 +15,9 @@
 .post-title {
 	background: #3273dc !important;
 }
+a.linkpost {
+    color: #FFF;
+}
 /*########## custom styles for cards and sidebar menu 06-05-2018*/
 .card-header-title, .card-header-title h4 a {
 	background: #606d82; 
@@ -40,6 +43,7 @@
 .item-menu a {
 	color: white;
 }
+
 
 .item-menu-inside {
 	background: #363c42; 
@@ -75,11 +79,25 @@
 	color: #fff;
 }
 
-ul#navlist li a {
-	color: #fff; 
-	font-size: small;
+ul#navlistback li a {
+    color: #363636;
+    font-size: small;
+    font-weight: bold;
 }
 
+#navlistback li, #navlistback li strong {
+	display: inline; 
+	list-style-type: none; 
+	padding-right: 20px; 
+	font-size: small;
+    color: #363636;
+}
+
+ul#navlistback li a {
+    color: #363636;
+    font-size: small;
+    font-weight: bold;
+}
 .footer {
 	background-color: #3273dc;
 	padding: 1rem;
