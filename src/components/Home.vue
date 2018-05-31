@@ -1,16 +1,53 @@
   <template>
     <div id="app">
       <section>
-        <div class="container is-fluid" style="margin:0; padding: 0px;">
-          <div class="notification" style="margin:0; padding: 0px;">
-           <figure class="image">
-             <img src="../assets/img/h1.png"/>
-             <img src="../assets/img/header.png">
-           </figure>
-         </div>
+        <div class=" is-fluid" style="margin:0; padding: 0px;">
+          
+          <div class="columns">
+            <div class="column">
+
+              <section class="hero is-dark is-bold">
+                <div class="hero-body">
+                  <div class="container">
+                    <article class="media">
+                      <figure class="media-left">
+                        <p class="image is-128x128">
+                          <img src="../assets/img/logo.png">
+                        </p>
+                      </figure>
+                      <div class="media-content">
+                        <p></p>
+                      </div>
+                      
+                    </article>
+                    <h1 class="title">
+                      Forza System
+                    </h1>
+                    <h2 class="subtitle">
+                      UNEFA - LARA
+                    </h2>
+                    
+                  </div>
+                </div>
+                
+              </section>
+              <section class="hero is-warning is-bold">
+                <div class="hero-custom">
+                  <div class="container">
+                    <h2 class="title has-text-centered">
+                      Universidad Nacional Experimental-Politécnica de la Fuerza Armada
+                    </h2>
+                  </div>
+                </div>
+              </section>
+            
+          </div>
+          </div>
+              
+          
        </div>
      </section>
-     <section class="section ppal">
+     <section class="section bg">
       <div class="container">
         <div class="columns">
           <sidebar></sidebar>
@@ -42,7 +79,7 @@
   </div>
 </div>
 
-    <footer class="footer">
+    <footer class="footer hero is-dark is-bold">
       <div class="container">
         <div class="columns is-centered">
           <div class="columm">
@@ -69,10 +106,20 @@
   </div>
 </template>
 <style type="text/css">
+  .title, .subtitle {
+    margin-left: 150px;
+  }
+  .bg {
+    background-color: hsl(0, 0%, 86%);
+  }
+  .hero-custom{
+    padding: 10px;
+  }
 
 </style>
 
 <script>
+ 
   import NavbarHome from './Home/layout/NavbarHome'
   import SidebarHome from './Home/layout/SidebarHome'
   import PaginationHome from './Home/layout/PaginationHome'
@@ -82,7 +129,8 @@
     components: {
       'navbar': NavbarHome,
       'sidebar': SidebarHome,
-      'pagination': PaginationHome
+      'pagination': PaginationHome,
+     
     }
   }
 
