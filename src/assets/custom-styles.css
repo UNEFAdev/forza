@@ -79,10 +79,9 @@ a.linkpost {
 	color: #fff;
 }
 
-ul#navlistback li a {
-    color: #363636;
+ul#navlist li a {
+    color: #fff;
     font-size: small;
-    font-weight: bold;
 }
 
 #navlistback li, #navlistback li strong {
