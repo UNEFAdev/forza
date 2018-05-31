@@ -24,14 +24,6 @@
       <!-- post right sidebar -->
       <div class="column is-one-third">
 
-        <!-- edit author -->
-        <div class="field">
-          <label class="label">Autor</label>
-          <div class="control">
-            <input type="text" class="input" maxlength="25" v-model="post.author" readonly>
-          </div>
-        </div>
-
         <!-- edit tags -->
         <div class="field">
           <label class="label">Etiquetas</label>
