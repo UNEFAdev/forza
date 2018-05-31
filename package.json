@@ -20,6 +20,7 @@
     "vue": "^2.5.2",
     "vue-bulma-accordion": "^0.3.5",
     "vue-loading-spinner": "^1.0.11",
+    "vue-parallaxy": "^1.1.1",
     "vue-quill-editor": "^3.0.5",
     "vue-router": "^3.0.1",
     "vuefire": "^1.4.5"

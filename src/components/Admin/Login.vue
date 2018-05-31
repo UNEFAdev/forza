@@ -67,7 +67,6 @@ export default {
             let values = snapshot.val()
             let key = Object.keys(values)
             user = values[key[0]]
-            console.log(user.role)
             if ( user.role === 'invitado' ){
               this.showNotification('warning', 'Su cuenta aun no se ha verificado... Lo sentimos.')
               return
