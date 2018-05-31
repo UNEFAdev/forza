@@ -1,8 +1,6 @@
 <template>
  
-  
-    <div class="">
-      
+    <div class="">     
       
       <div v-if="loading" class="columns is-mobile is-centered">
         <div class="column is-narrow spinner" >

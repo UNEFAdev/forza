@@ -28,21 +28,19 @@
         <div class="field">
           <label class="label">Autor</label>
           <div class="control">
-            <input type="text" class="input" maxlength="25" v-model="post.author">
-            <p>this field is for demo purposes only</p>
+            <input type="text" class="input" maxlength="25" v-model="post.author" readonly>
           </div>
         </div>
 
         <!-- edit tags -->
         <div class="field">
-          <label class="label">Tags</label>
+          <label class="label">Etiquetas</label>
           <div class="control">
             <input type="text" class="input" maxlength="25" v-model="tagString">
-            <p>Seperate tags with commas</p>
           </div>
         </div>
         <div class="field">
-          <label class="label">Image</label>
+          <label class="label">Imagen</label>
           <div class="control">
             <img :src="post.img">
             <div class="file">
@@ -53,7 +51,7 @@
                     <i class="fa fa-upload"></i>
                   </span>
                   <span class="file-label">
-                    Choose a file…
+                    Escoge un archivo…
                   </span>
                 </span>
               </label>
@@ -70,8 +68,8 @@
     </div>
 
     <!-- the form buttons -->
-    <button type="submit" class="button is-info" @click="update">Update</button>
-    <router-link to="/admin/posts" class="button is-danger">Cancel</router-link>
+    <button type="submit" class="button is-info" @click="update">Modificar</button>
+    <router-link to="/admin/posts" class="button is-danger">Cancelar</router-link>
   </div>
 </template>
 
