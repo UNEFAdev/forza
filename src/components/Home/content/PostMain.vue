@@ -35,9 +35,15 @@
               </header>
               <div class="card-content">
                 <ul class="menu-list">
-                  <li class="item-menu"><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
-                  <li class="item-menu"><a href="/servicio-comunitario"><i class="fa fa-globe" aria-hidden="true"></i> Servicio Comunitario</a></li>
-                  <li class="item-menu"><a href="/pasantias"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pasantías</a></li>
+                  <li class="item-menu" @click="cursorPag(null, null,'/')">
+                    <router-link :to="'/'"><i class="fa fa-home" aria-hidden="true"></i> Inicio</router-link>
+                  </li>
+                  <li class="item-menu" @click="cursorPag(null, null,'/servicio-comunitario')">
+                    <router-link :to="'/servicio-comunitario'"><i class="fa fa-globe" aria-hidden="true"></i> Servicio Comunitario</router-link>
+                  </li>
+                  <li class="item-menu" @click="cursorPag(null, null,'/pasantias')">
+                    <router-link :to="'/pasantias'"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pasantías</router-link>
+                  </li>
                 </ul>
               </div>
               <p class="card-header-title menu-label">
@@ -62,7 +68,7 @@
                   <h4 slot="title"><i class="fa fa-laptop" aria-hidden="true"></i> Ing. De Sistemas</h4>
                   <p slot="content">
                     <ul>
-                      <li class="item-menu-inside" @click="cursorPag(null, null,'/sistemas/regulares')" >
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/sistemas/regulares')">
                         <router-link :to="'/sistemas/regulares'">Estudiantes Regulares</router-link>
                       </li>
                       <li class="item-menu-inside" @click="cursorPag(null, null, '/sistemas/cinu')">
