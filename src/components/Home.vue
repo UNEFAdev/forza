@@ -49,15 +49,14 @@
      </section>
      <section class="section bg">
       <div class="container">
-        <div class="columns">
-          <sidebar></sidebar>
-          <div class="column">
+        
+          <!--<sidebar></sidebar>-->
             <!--<navbar></navbar>-->
             <div class="wrapper">
               <router-view></router-view>
             </div>
-          </div>
-        </div>
+          
+        
       </div>
     </section>
 

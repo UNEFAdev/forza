@@ -37,11 +37,12 @@
             <h4 slot="title"><i class="fa fa-laptop" aria-hidden="true"></i> Ing. De Sistemas</h4>
             <p slot="content">
               <ul>
-                <li class="item-menu-inside">
-                  <a href="/sistemas/regulares">Estudiantes Regulares</a>
+                <li class="item-menu-inside" @click="paginate('/sistemas/regulares')" >
+                  <router-link :to="'/sistemas/regulares'">Estudiantes Regulares</router-link>
+                 
                 </li>
-                <li class="item-menu-inside">
-                  <a href="/sistemas/cinu">CINU</a>
+                <li class="item-menu-inside" @click="paginate('/sistemas/cinu')">
+                  <router-link :to="'/sistemas/cinu'">CINU</router-link>
                 </li>
                 <li class="item-menu-inside">
                   <a href="/sistemas/docentes">Docentes</a>
@@ -143,14 +144,24 @@
 <script>
 import { BulmaAccordion, BulmaAccordionItem } from 'vue-bulma-accordion'
 
+import poster from '../../../mixins/poster'
 export default {
   name: 'SidebarHome',
   data() {
-    return {}
+    return {
+      size: 7
+    }
   },
   components: {
     BulmaAccordion,
     BulmaAccordionItem
+  },
+  mixins: [poster],
+  methods: {
+    paginate (path) {
+      console.log('here')
+      this.cursorPag(null, null, path)
+    }
   }
 }
 

@@ -1,17 +1,194 @@
 <template>
- 
-    <div class="">     
+    <div class="columns is-mobile is-centered">
       
-      <div v-if="loading" class="columns is-mobile is-centered">
-        <div class="column is-narrow spinner" >
-          <div class="spinner">
+      <div v-if="!loading && !pages[0].length > 0" class="column is-half is-narrow">
+        <div class="columns is-mobile is-centered spinner">
+        <a @click="cursorPag(null, null, '/') "class="has-text-weight-semibold has-text-link">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+          <router-link :to="'/'">Atras &nbsp</router-link>
+          
+        </a>
+        <br>
+         <h1>No hay resultados que mostrar</h1>
+          
+        </div>
+      </div>
+
+      <div v-else-if="loading" class="column is-half is-narrow">
+        <div class="columns is-mobile is-centered spinner">
+          <div class="spinner column is-one-fifth is-narrow">
             <circle3 background="#3273dc" size="60px"></circle3>
           </div>
           
         </div>
       </div>
+
+ 
+    <div v-else class="columns">
+        <aside class="column is-one-quarter">
+          <nav class="panel card-right">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title menu-label">
+                  General
+                </p>
+              </header>
+              <div class="card-content">
+                <ul class="menu-list">
+                  <li class="item-menu"><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
+                  <li class="item-menu"><a href="/servicio-comunitario"><i class="fa fa-globe" aria-hidden="true"></i> Servicio Comunitario</a></li>
+                  <li class="item-menu"><a href="/pasantias"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Pasantías</a></li>
+                </ul>
+              </div>
+              <p class="card-header-title menu-label">
+                Carreras
+              </p>
+              <div class="card-content">
+                <BulmaAccordion
+                :dropdown="false"
+                :icon="'plus-minus'"
+                :caretAnimation="{
+                duration: '.5s',
+                timerFunc: 'ease-in-out',
+              }"
+              :slide="{
+              duration: '.5s',
+              timerFunc: 'ease',
+            }"
+            >
+            <div class="menu">
+              <ul class="menu-list">
+                <li><BulmaAccordionItem>
+                  <h4 slot="title"><i class="fa fa-laptop" aria-hidden="true"></i> Ing. De Sistemas</h4>
+                  <p slot="content">
+                    <ul>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/sistemas/regulares')" >
+                        <router-link :to="'/sistemas/regulares'">Estudiantes Regulares</router-link>
+                      </li>
+                      <li class="item-menu-inside" @click="cursorPag(null, null, '/sistemas/cinu')">
+                        <router-link :to="'/sistemas/cinu'">CINU</router-link>
+                      </li>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/sistemas/docentes')">
+                        <router-link :to="'/sistemas/docentes'">Docentes</router-link>
+                      </li>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/sistemas/egresados')">
+                        <router-link :to="'/sistemas/egresados'">Egresados</router-link>
+                      </li>
+                    </ul>
+                  </p>
+                </BulmaAccordionItem>
+              </li>
+              <li>
+                <BulmaAccordionItem>
+                  <h4 slot="title"><i class="fa fa-bolt" aria-hidden="true"></i> Ing. Eléctrica</h4>
+                  <p slot="content">
+                    <ul>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/electrica/regulares')">
+                        <router-link :to="'/electrica/regulares'">Estudiantes regulares</router-link>
+                      </li>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/electrica/cinu')">
+                        <router-link :to="'/electrica/cinu'">CINU</router-link>
+                      </li>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/electrica/docentes')">
+                        <router-link :to="'/electrica/docentes'">Docentes</router-link>
+                      </li>
+                    </ul>
+                  </p>
+                </BulmaAccordionItem>
+              </li>
+              <li>
+                <BulmaAccordionItem>
+                  <h4 slot="title"><i class="fa fa-pagelines" aria-hidden="true"></i> Ing. Agronómica</h4>
+                  <p slot="content">
+                    <ul>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/agronomia/regulares')">
+                        <router-link :to="'/agronomia/regulares'">Estudiantes regulares</router-link>
+                      </li>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/agronomia/cinu')">
+                        <router-link :to="'/agronomia/cinu'">CINU</router-link>
+                      </li>
+                    </ul>
+                  </p>
+                </BulmaAccordionItem>
+              </li>
+              <li>
+                <BulmaAccordionItem>
+                  <h4 slot="title"><i class="fa fa-stethoscope" aria-hidden="true"></i> TSU. Enfermería</h4>
+                  <p slot="content">
+                    <ul>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/enfermeria/regulares')">
+                        <router-link :to="'/enfermeria/regulares'">Estudiantes regulares</router-link>
+                      </li>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/enfermeria/cinu')">
+                        <router-link :to="'/enfermeria/cinu'">CINU</router-link>
+                      </li>
+                    </ul>
+                  </p>
+                </BulmaAccordionItem>
+              </li>
+              <li>
+                <BulmaAccordionItem>
+                  <h4 slot="title"><i class="fa fa-archive" aria-hidden="true"></i> Lic. Administración y gestión municipal</h4>
+                  <p slot="content">
+                    <ul>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/administracion/regulares')">
+                        <router-link :to="'/administracion/regulares'">Estudiantes regulares</router-link>
+                      </li>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/administracion/cinu')">
+                        <router-link :to="'/administracion/cinu'">CINU</router-link>
+                      </li>
+                    </ul>
+                  </p>
+                </BulmaAccordionItem>
+              </li>
+              <li>
+                <BulmaAccordionItem>
+                  <h4 slot="title"><i class="fa fa-university" aria-hidden="true"></i> Lic. Economía Social</h4>
+                  <p slot="content">
+                    <ul>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/economia/regulares')">
+                        <router-link :to="'/economia/regulares'">Estudiantes regulares</router-link>
+                      </li>
+                      <li class="item-menu-inside" @click="cursorPag(null, null,'/economia/cinu')">
+                        <router-link :to="'/economia/cinu'">CINU</router-link>
+                      </li>
+                    </ul>
+                  </p>
+                </BulmaAccordionItem>
+              </li>
+            </ul>
+          </div>
+        </BulmaAccordion>
+      </div>
+      </div>
+      </nav>
+
+      <div class="card is-hidden-mobile">
+        <div class="card-content">
+          <div class="content">
+            <a class="twitter-timeline" data-lang="es" data-width="400" data-height="400" href="https://twitter.com/DSUnefaLara?ref_src=twsrc%5Etfw">Tweets by DSUnefaLara</a>
+          </div>
+        </div>
+      </div>
+      <div class="card is-hidden-mobile">
+        <div class="card-content">
+          <div class="content">
+          <a class="twitter-timeline" data-lang="es" data-width="400" data-height="400" href="https://twitter.com/unefa_ve?ref_src=twsrc%5Etfw">Tweets by unefa_ve</a>
+          </div>
+        </div>
+      </div>
+      <div class="card is-hidden-mobile">
+        <div class="card-content">
+          <div class="content">
+            <a href="https://instawidget.net/v/user/dsunefalara" id="link-2d1e792ded7abca16724aa4a1b78cd052c6f829918847e688f5609a5c764d310">@dsunefalara</a>
+          </div>
+        </div>
+      </div>
+      </aside>     
       
-      <div v-else class="all">
+      
+      
+      <div class="column">
       
       <div v-for="(post, index) in pages[pageNumber]" :key="index" class="card card-right ">
         <header class="card-header">
@@ -90,6 +267,7 @@
       </nav>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -97,7 +275,10 @@ import moment from 'moment'
 import {postsRef} from '../../../config'
 import editorReadMode from './editor-read'
 import sharer from '../../../mixins/sharers'
+import poster from '../../../mixins/poster'
 import { Circle3 } from 'vue-loading-spinner'
+import { BulmaAccordion, BulmaAccordionItem } from 'vue-bulma-accordion'
+
 export default {
   name: 'PostMain',
   data () {
@@ -105,22 +286,85 @@ export default {
       editorReadMode,
       pageNumber: 0,
       count: '',
-      keys: [],
       pages: [],
-      promises: [],
       size: 7,
+      promises: [],
       extraRecord: [],
-      newPages: [],
-      loading: 'true'
+      keys: [],
+      loading: true,
+      currentPath: this.$route.path
     }
   },
   components: {
-    Circle3
-  },
-  firebase: {
-    posts: postsRef
+    Circle3,
+    BulmaAccordion,
+    BulmaAccordionItem
   },
   methods: {
+    cursorPag (acumulador, cursor, path) {
+      this.currentPath = path
+      this.loading=true
+      this.pages = acumulador || []
+      if (path === '/') {
+        var query = postsRef.orderByKey().limitToLast(this.size + 1)
+      } else if (path === '/sistemas/regulares') {
+        var query = postsRef.orderByChild('subcategory').equalTo('sist-regulares').limitToLast(this.size + 1)
+      } else if (path === '/sistemas/cinu') {
+        var query = postsRef.orderByChild('subcategory').equalTo('sist-cinu').limitToLast(this.size + 1)
+      } else if (path === '/sistemas/egresados') {
+        var query = postsRef.orderByChild('subcategory').equalTo('sist-egresados').limitToLast(this.size + 1)
+      } else if (path === '/sistemas/docentes') {
+        var query = postsRef.orderByChild('subcategory').equalTo('sist-docentes').limitToLast(this.size + 1)
+      } else if (path === '/electrica/regulares') {
+        var query = postsRef.orderByChild('subcategory').equalTo('elec-regulares').limitToLast(this.size + 1)
+      } else if (path === '/electrica/cinu') {
+        var query = postsRef.orderByChild('subcategory').equalTo('elec-cinu').limitToLast(this.size + 1)
+      } else if (path === '/electrica/docentes') {
+        var query = postsRef.orderByChild('subcategory').equalTo('elec-docentes').limitToLast(this.size + 1)
+      } else if (path === '/enfermeria/regulares') {
+        var query = postsRef.orderByChild('subcategory').equalTo('enfer-regulares').limitToLast(this.size + 1)
+      } else if (path === '/enfermeria/cinu') {
+        var query = postsRef.orderByChild('subcategory').equalTo('enfer-cinu').limitToLast(this.size + 1)
+      } else if (path === '/agronomia/regulares') {
+        var query = postsRef.orderByChild('subcategory').equalTo('agro-regulares').limitToLast(this.size + 1)
+      } else if (path === '/agronomia/cinu') {
+        var query = postsRef.orderByChild('subcategory').equalTo('agro-cinu').limitToLast(this.size + 1)
+      } else if (path === '/administracion/regulares') {
+        var query = postsRef.orderByChild('subcategory').equalTo('admin-regulares').limitToLast(this.size + 1)
+      } else if (path === '/administracion/cinu') {
+        var query = postsRef.orderByChild('subcategory').equalTo('admin-cinu').limitToLast(this.size + 1)
+      } else if (path === '/economia/regulares') {
+        var query = postsRef.orderByChild('subcategory').equalTo('econ-regulares').limitToLast(this.size + 1)
+      } else if (path === '/economia/cinu') {
+        var query = postsRef.orderByChild('subcategory').equalTo('econ-cinu').limitToLast(this.size + 1)
+      } else if (path === '/servicio-comunitario') {
+        var query = postsRef.orderByChild('subcategory').equalTo('ser-con').limitToLast(this.size + 1)
+      } else if (path === '/pasantias') {
+        var query = postsRef.orderByChild('subcategory').equalTo('pas').limitToLast(this.size + 1)
+      }
+
+      if (cursor) {
+        query = query.endAt(cursor)
+      }
+
+      return query.once('value').then(function (snaps) {
+        var page = []
+        snaps.forEach(function (childSnap) {
+          var item = childSnap.val()
+          item['.key'] = childSnap.key
+          page.unshift(item)
+        })
+        if (page.length > this.size) {
+          this.extraRecord = page.pop()
+          this.pages.push(page)
+          return this.cursorPag(this.pages, this.extraRecord['.key'])
+        } else {
+          this.pages.push(page)
+          this.loading = false
+          return Promise.resolve(this.pages)
+        }
+      }.bind(this))
+    },
     
     colorPost (text) {
       switch (text) {
@@ -225,77 +469,15 @@ export default {
     prevPage () {
       this.pageNumber--
       
-    },
-    cursorPag (acumulador, cursor) {
-      this.pages = acumulador || []
-      if (this.$route.path === '/') {
-        var query = postsRef.orderByKey().limitToLast(this.size + 1)
-      } else if (this.$route.path === '/sistemas/regulares') {
-        var query = postsRef.orderByChild('subcategory').equalTo('sist-regulares').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/sistemas/cinu') {
-        var query = postsRef.orderByChild('subcategory').equalTo('sist-cinu').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/sistemas/egresados') {
-        var query = postsRef.orderByChild('subcategory').equalTo('sist-egresados').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/sistemas/docentes') {
-        var query = postsRef.orderByChild('subcategory').equalTo('sist-docentes').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/electrica/regulares') {
-        var query = postsRef.orderByChild('subcategory').equalTo('elec-regulares').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/electrica/cinu') {
-        var query = postsRef.orderByChild('subcategory').equalTo('elec-cinu').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/electrica/docentes') {
-        var query = postsRef.orderByChild('subcategory').equalTo('elec-docentes').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/enfermeria/regulares') {
-        var query = postsRef.orderByChild('subcategory').equalTo('enfer-regulares').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/enfermeria/cinu') {
-        var query = postsRef.orderByChild('subcategory').equalTo('enfer-cinu').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/agronomia/regulares') {
-        var query = postsRef.orderByChild('subcategory').equalTo('agro-regulares').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/agronomia/cinu') {
-        var query = postsRef.orderByChild('subcategory').equalTo('agro-cinu').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/administracion/regulares') {
-        var query = postsRef.orderByChild('subcategory').equalTo('admin-regulares').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/administracion/cinu') {
-        var query = postsRef.orderByChild('subcategory').equalTo('admin-cinu').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/economia/regulares') {
-        var query = postsRef.orderByChild('subcategory').equalTo('econ-regulares').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/economia/cinu') {
-        var query = postsRef.orderByChild('subcategory').equalTo('econ-cinu').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/servicio-comunitario') {
-        var query = postsRef.orderByChild('subcategory').equalTo('ser-con').limitToLast(this.size + 1)
-      } else if (this.$route.path === '/pasantias') {
-        var query = postsRef.orderByChild('subcategory').equalTo('pas').limitToLast(this.size + 1)
-      }
-
-      if (cursor) {
-        query = query.endAt(cursor)
-      }
-
-      return query.once('value').then(function (snaps) {
-        var page = []
-        snaps.forEach(function (childSnap) {
-          var item = childSnap.val()
-          item['.key'] = childSnap.key
-          page.unshift(item)
-        })
-        if (page.length > this.size) {
-          this.extraRecord = page.pop()
-          this.pages.push(page)
-          return this.cursorPag(this.pages, this.extraRecord['.key'])
-        } else {
-          this.pages.push(page)
-          this.loading = false
-          return Promise.resolve(this.pages)
-        }
-      }.bind(this))
     }
-
+  
   },
   computed: {
-    
+ 
   },
   mixins: [sharer],
   mounted: function () {
-    this.cursorPag()
+    this.cursorPag(null, null, this.$route.path)
     if(!this.$route.params.page){
       this.pageNumber = 0
     }else{
@@ -303,6 +485,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style scoped>
