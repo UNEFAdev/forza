@@ -1,52 +1,68 @@
   <template>
     <div id="app">
-      <section>
-        <div class=" is-fluid" style="margin:0; padding: 0px;">
-          
-          <div class="columns">
-            <div class="column">
 
-              <section class="hero is-dark is-bold">
-                <div class="hero-body">
+            <section class="hero is-dark is-bold">
+              <!-- Hero head: will stick at the top -->
+              <div class="hero-head">
+                <nav class="navbar">
                   <div class="container">
-                    <article class="media">
-                      <figure class="media-left">
-                        <p class="image is-128x128">
-                          <img src="../assets/img/logo.png">
-                        </p>
-                      </figure>
-                      <div class="media-content">
-                        <p></p>
+                    <div class="navbar-brand">
+                      <a href="/" class="navbar-item is-size-1">
+                        Forza System
+                      </a>
+                      <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </span>
+                    </div>
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+                      <div class="navbar-end">
+                        <a class="navbar-item">
+                          Novedades
+                        </a>
+                        
+                        <router-link  class="navbar-item" :to="'/admin'">
+                          Entrar
+                        </router-link>
+                        
+                        <span class="navbar-item">
+                          <a class="button is-primary is-inverted">
+                            <span class="icon">
+                              <i class="fab fa-github"></i>
+                            </span>
+                            <span>Github</span>
+                          </a>
+                        </span>
                       </div>
-                      
-                    </article>
-                    <h1 class="title">
-                      Forza System
-                    </h1>
-                    <h2 class="subtitle">
-                      UNEFA - LARA
-                    </h2>
-                    
+                    </div>
                   </div>
+                </nav>
+              </div>
+
+              <!-- Hero content: will be in the middle -->
+              <div class="hero-body">
+                <div class="columns is-hidden-touch">
+                  <img src="../assets/img/logo_opt.png" class="center-10">
                 </div>
-                
-              </section>
-              <section class="hero is-warning is-bold">
-                <div class="hero-custom">
-                  <div class="container">
-                    <h2 class="title has-text-centered">
-                      Universidad Nacional Experimental-Politécnica de la Fuerza Armada
-                    </h2>
-                  </div>
+                <div class="columns is-hidden-desktop">
+                  <img src="../assets/img/logo_opt.png" class="center-50">
                 </div>
-              </section>
+                <h1 class="is-size-4 has-text-centered">UNEFA - LARA</h1>
+              </div>
+            </section>
+
+            <section class="hero is-warning is-bold is-centered">
+              <div class="hero-custom">
+                <div class="container">
+                  <h1 class="has-text-centered is-size-4 has-text-weight-bold is-size-6-mobile">
+                    Universidad Nacional Experimental-Politécnica de la Fuerza Armada
+                  </h1>
+                </div>
+              </div>
+            </section>
             
-          </div>
-          </div>
-              
-          
-       </div>
-     </section>
+        
      <section class="section bg">
       <div class="container">
         
@@ -114,7 +130,18 @@
   .hero-custom{
     padding: 10px;
   }
-
+  .center-10 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+  }
+  .center-50 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
 </style>
 
 <script>
@@ -122,6 +149,7 @@
   import NavbarHome from './Home/layout/NavbarHome'
   import SidebarHome from './Home/layout/SidebarHome'
   import PaginationHome from './Home/layout/PaginationHome'
+  import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 
   export default {
     name: 'home',
@@ -129,6 +157,8 @@
       'navbar': NavbarHome,
       'sidebar': SidebarHome,
       'pagination': PaginationHome,
+      FontAwesomeIcon
+
      
     }
   }
